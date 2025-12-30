@@ -1,0 +1,2788 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+
+    <style>
+        .horizontal{
+            display: flex;
+            flex-direction: row;
+            gap: 221px;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+    <div style="display: flex;width: 100%;">
+        <div><img src="data:image/png;base64,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" width="283" height="104" alt=""></div>
+        <div style="display: flex; margin-left: 50%;">
+            <div><span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px;">DMRE 33</span></div>
+        </div>
+    </div>
+</div>
+<div style="margin-left: 12.5%; font-family: Arial, Helvetica, sans-serif;">
+    <summary style="line-height: 1.5; font-size: 19px;">
+        <strong>RETAIL LICENCE ANNUAL INFORMATION (SUBMISSION FORM)
+        </strong>
+    </summary>
+    <summary style="line-height: 1.5;">
+        <em>
+            <span style="font-size: 15px;"><strong><span style='font-family: "Arial Black", Gadget, sans-serif;'>PETROLEUM ACT 120 1977 AS &ndash; PETROLEUM SITE AND RETAIL LICENCE&nbsp;<br>REGULATIONS 2006</span></strong></span></em></summary>
+    <table cellspacing="0" cellpadding="0" width="84%">
+        <tbody>
+            <tr>
+                <td style="border-top: 1px solid black; border-left: 1px solid black; border-right: 1px solid black;">
+                    <p><strong><span style="font-size: 12px;margin-left: 5px;">INSTRUCTIONS</span></strong></p>
+                </td>
+                <td colspan="13" style="border-top: 1px solid black; border-right: 1px solid black;">
+                    <p><strong><span style="font-size: 11px;">&nbsp;&nbsp;</span></strong><span style="font-size: 11px;"><strong><u>PLEASE COMPLETE</u></strong></span></p>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-left: 1px solid black; border-right: 1px solid black;line-height: 40px;">
+                    <p><span style="font-size: 11px;margin-left: 5px;">1&nbsp;READ BEFORE THIS APPLICATION FORM.</span></p>
+                </td>
+                <td colspan="13" style="border-right: 1px solid black;">
+                    <p><span style="font-size: 11px;margin-left: 5px"><strong>SITE LICENCE NUMBER</strong></span></p>
+                </td>
+            </tr>
+            <tr style="line-height: 40px;">
+                <td style="border-left: 1px solid black; border-right: 1px solid black;">
+                    <p><span style="font-size: 11px;margin-left: 5px">2&nbsp;USE LETTERS AND APPLICABLE WITH A <strong style="border: 1px solid black;">X</strong>.</span></p>
+                    <p><br></p>
+                </td>
+                <td colspan="13" class="horizontal" style="border-right: 1px solid black;">
+                    <div style="border: 1px solid black;width: 80%;margin-left: 5px;">
+                        <div style="border: 1px solid black;"></div>
+                        <div style="border: 1px solid black;"></div>
+                        <div style="border: 1px solid black;"></div>
+                        <div style="border: 1px solid black;"></div>
+                        <div style="border: 1px solid black;"></div>
+                        <div style="border: 1px solid black;"></div>
+                        <div style="border: 1px solid black;"></div>
+                        <div style="border: 1px solid black;"></div>
+                        <div style="border: 1px solid black;"></div>
+                        <div style="border: 1px solid black;"></div>
+                        <div style="border: 1px solid black;"></div>
+
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-left: 1px solid black; border-right: 1px solid black;">
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+                <td colspan="13" style="border-left: 1px solid black; border-right: 1px solid black;">
+                    <p><span style="font-size: 11px;"><strong>****** ******* NUMBER</strong></span></p>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-left: 1px solid black; border-right: 1px solid black;">
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+                <td style="border-left: 1px solid black;">
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>R</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>/</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>2</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>0</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>1</strong></span></p>
+                </td>
+                <td style="width: 2.3747%;">
+                    <p><span style="font-size: 11px;"><strong>5</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>/</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>0</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>2</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>1</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>8</strong></span></p>
+                </td>
+                <td style="width: 37.1421%; border-right: 1px solid black;">
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;">
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+                <td colspan="13" style="border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;">
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;"><strong>******* 1:</strong><strong>&nbsp;&nbsp;</strong><strong>******** LICENSEE&rsquo;S PARTICULARS</strong></span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">********** NAME IN FULL</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>W</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>K</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>T</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>R</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>A</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>D</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>I</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>N</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>G</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>E</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>N</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>T</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>E</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>R</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>P</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>R</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>I</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>S</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>E</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>S</strong></span></p>
+                </td>
+            </tr>
+            <tr>
+                <td><br></td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>C</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>C</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">***** NAME</span></p>
+                    <p><span style="font-size: 11px;">** FULL</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>L</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>Y</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>T</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>T</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>E</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>L</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>T</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>O</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>N</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>M</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>O</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>T</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>O</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>R</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>S</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+    <p><span style="font-size: 11px;">ENTER DETAILS OF CONTACT ****** OF ENTITY&nbsp;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">TITLE</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>M</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>R</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">FAMILY NAME</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>S</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>U</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>L</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>I</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>M</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>A</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>N</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">FIRST NAME</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>S</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>H</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>A</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>Z</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>I</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>M</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">IDENTITY NO.</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>8</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>5</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>0</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>3</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>1</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>8</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>5</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>0</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>2</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>9</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>0</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>8</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>4</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;"><strong>SECTION 2:</strong><strong>&nbsp;&nbsp;</strong><strong>COMPLETE IF ***** IS A CHANGE IN LICENSEE&rsquo;S PARTICULARS</strong></span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">TRADE NAME</span></p>
+                    <p><span style="font-size: 11px;">IN FULL</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">POSTAL ADDRESS OF&nbsp;</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">REGISTERED OFFICE</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">POSTAL CODE</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">BUSINESS TEL NO. (INCLUDE</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">CODE)</span></p>
+                </td>
+                <td colspan="11">
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">MOBILE PHONE NUMBER.</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">FAX NO.</span></p>
+                    <p><span style="font-size: 11px;">(INCLUDE</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">CODE)</span></p>
+                </td>
+                <td colspan="11">
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">E-MAIL ADDRESS</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;"><strong>SECTION 3:</strong><strong>&nbsp;&nbsp;</strong><strong>*********** ** BE COMPLETED IN RESPECT ** ****** INFORMATION SUBMISSION</strong></span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">********** NAME</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>W</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>K</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>T</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>R</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>A</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>D</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>I</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>N</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>G</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>E</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>N</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>T</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>E</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>R</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>P</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>R</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>I</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>S</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>E</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>S</strong></span></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">IN FULL</span></p>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>C</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>C</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">**** ** FUEL SUPPLIER (wholesaler / refiner)</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>E</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>N</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>G</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>E</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>N</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>P</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>E</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>T</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>R</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>O</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>L</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>E</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>U</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>M</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>L</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>I</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>M</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>I</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>T</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>E</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>D</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">OIL ******* ***** DISPLAYED/** ** DISPLAYED ON SITE</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>E</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>N</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>G</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>E</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>N</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">INDICATE OWNERSHIP BY ************ DISADVANTAGED ***** AFRICANS (HDSA&rsquo;s) IN</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>1</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>0</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>0</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>%</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">PERCENTAGE</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">INDICATE TYPE OF RELATIONSHIP BETWEEN SITE ***** AND RETAILER (DEALER)</span></p>
+    <p><span style="font-size: 11px;">(Select *** ** the following)</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;">RETAILER OWNED, ******** OPERATED</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>X</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;">3<sup>RD</sup> ***** OWNED, *** COMPANY LEASED,&nbsp;</span></p>
+                    <p><span style="font-size: 11px;">RETAILER OPERATED</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;">OIL ******* OWNED, RETAILER OPERATED</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;">OIL COMPANY ******** SITE</span></p>
+                    <p><span style="font-size: 11px;">(Include wholesale licence ****** if issued)</span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;">/</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;">/</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;">OTHER</span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">IF OTHER</span></p>
+                    <p><span style="font-size: 11px;">(SPECIFY)</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">VOLUMES (LITRES) SOLD ** LAST CALENDAR YEAR,</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                    <p><span style="font-size: 11px;">PETROL</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>2</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>6</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>8</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>9</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>4</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>0</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>2</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>.</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>0</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>3</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                    <p><span style="font-size: 11px;">DIESEL</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>8</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>7</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>0</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>7</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>0</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>4</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>.</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>9</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>4</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">ILLUMINATING PARAFFIN</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">INDICATE ****** OF EMPLOYEES BY RACE, GENDER AND DISABILITY</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">***** EMPLOYEES:&nbsp;&nbsp;MALE</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>1</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>5</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;&nbsp;&nbsp;FEMALE</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>4</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;&nbsp;&nbsp;DISABLED</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">COLOURED EMPLOYEES:&nbsp;MALE</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;&nbsp;&nbsp;FEMALE</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;&nbsp;&nbsp;DISABLED</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">INDIAN EMPLOYEES:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MALE</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>1</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;&nbsp;&nbsp;FEMALE</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>1</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;&nbsp;&nbsp;DISABLED</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">WHITE EMPLOYEES:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MALE</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;&nbsp;&nbsp;FEMALE</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;&nbsp;&nbsp;DISABLED</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">***** NUMBER OF EMPLOYEES</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>2</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>1</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;"><strong>SECTION 4:</strong><strong>&nbsp;&nbsp;</strong><strong>COMPLETE DETAIL ON ******** OF LICENSEE&rsquo;S EMPLOYEES</strong></span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <table cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <p><span style="font-size: 11px;">****** OF EMPLOYEES TRAINED</span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>2</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>1</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;"><strong>&nbsp;</strong></span></p>
+                </td>
+                <td>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                    <p><span style="font-size: 11px;">&nbsp;</span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">INDICATE ***** *** QUALIFICATIONS ******** ** EMPLOYEES</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;"><strong>SEE ANNEXURES &ldquo;A&rdquo; &amp; &ldquo;B&rdquo; ATTACHED HERETO.</strong></span></p>
+    <p><span style="font-size: 11px;"><br></span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 14px;"><strong>DECLARATION</strong></span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <p><span style="font-size: 11px;">I ______________________________________<strong>,</strong> ****** declare that all *********** provided herein is within my personal knowledge *** that &ndash;</span></p>
+    <p><span style="font-size: 11px;">&nbsp;</span></p>
+    <ol type="a">
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I am duly ********** to make **** declaration;</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I ** the designated person responsible for this ******* *** any conditions ******** thereto;</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I **** read and understood the *********** ******* hereto, with specific reference to ********** 34 ********* any false declaration; and</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;all *********** provided herein is ** the **** of ** knowledge true and correct.</li>
+    </ol>
+    <p>&nbsp;</p>
+    <p>Signed at<strong>&nbsp;____________________________</strong> ** this&nbsp;<strong><u>_____</u></strong>day of&nbsp;<strong>_________________</strong> 2024.</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;</p>
+    <p>Signature</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>I certify that the deponent &ndash;</p>
+    <p>&nbsp;</p>
+    <ol type="a">
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*** acknowledged that she knows *** understands the contents ** **** *********** form *** its annexures, that he has ** objection to ****** the prescribed oath and that he considers the oath ******* on *** conscience; and</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;has in the ********** ****** ***** that the contents of **** application **** and its annexures are true and signed same before me at <strong>___________</strong> on this <strong><u>_____</u></strong>day of<strong>_________</strong>____________<strong>&nbsp;2024</strong>.</li>
+    </ol>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p style="text-align: center;">_____________________________</p>
+    <p style="text-align: center;"><strong>************ OF OATHS</strong></p>
+    <p>&nbsp;</p>
+    <p style="text-align: center;">Name: _______________________________________________________________</p>
+    <p style="text-align: center;">&nbsp;</p>
+    <p style="text-align: center;">Address:&nbsp;_______________________________________________________________</p>
+    <p style="text-align: center;">&nbsp;</p>
+    <p style="text-align: center;">Capacity: _______________________________________________________________</p>
+    <div>
+        <div>
+            <p><br></p>
+        </div>
+    </div>
+</div>
+<p><a href="https://wordtohtml.net/?utm_source=wth_free_doc_conversion_link&utm_medium=external" target="_blank">Converted ** HTML with WordToHTML.net</a> |&nbsp;<a href="https://documentconverter.pro/?utm_source=wth_free_doc_conversion_link&utm_medium=external" target="_blank">Document Converter for Windows</a></p>
+<div style="color: red; font-size: 12px; width: 600px; margin: 0 auto; text-align: center;">Created with <a href="https://wordtohtml.net/">WordToHTML.net</a> trial.</div>
+
+</body>
+</html>

@@ -1,0 +1,842 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>DMRE Form 33 — Replica (HTML)</title>
+
+<!--
+  NOTES:
+  - This page is styled for A4 portrait printing (210mm × 297mm).
+  - All visible fields are <input>/<textarea>/<select> with clear name attributes.
+  - Use browser Print (Ctrl+P) or the Download PDF button below (html2pdf) to export.
+  - For pixel-perfect match, replace fonts and tweak sizes after testing prints.
+-->
+
+<style>
+  /* Page layout: A4 */
+  @page { size: A4; margin: 12mm; }
+  html,body { height:100%; margin:0; padding:0; background:#f0f2f5; font-family: "Helvetica Neue", Arial, sans-serif; color:#0b1220; }
+  .paper {
+    width: 210mm;  /* A4 width */
+    min-height: 297mm;
+    margin: 18px auto;
+    background: white;
+    box-shadow: 0 6px 20px rgba(11,17,34,0.08);
+    padding: 18mm;
+    box-sizing: border-box;
+  }
+
+  h1.form-title { font-size:18px; margin:0 0 6px; color:#002e6e; letter-spacing:0.4px; }
+  p.meta { margin: 0 0 14px; color:#354155; font-size:12px; }
+
+  /* Sections */
+  .section { border:1px solid #d8e0ea; padding:10px; margin-bottom:10px; border-radius:4px; }
+  .section .title { background:#f5f8fb; padding:6px 8px; font-weight:700; font-size:13px; color:#073763; border-radius:3px; display:inline-block; margin-bottom:8px; }
+
+  /* Form grid */
+  .row { display:flex; gap:10px; margin-bottom:8px; align-items:center; }
+  .col { display:flex; flex-direction:column; }
+  .label { font-size:12px; color:#2b3b4a; margin-bottom:4px; }
+  input[type="text"], input[type="email"], input[type="number"], input[type="date"], select {
+    border:1px solid #cdd8e6; border-radius:4px; padding:8px; font-size:13px; width:100%;
+    background: #fff;
+    box-sizing:border-box;
+  }
+  textarea { border:1px solid #cdd8e6; border-radius:4px; padding:8px; font-size:13px; width:100%; min-height:72px; box-sizing:border-box; }
+
+  /* specific widths for the layout to mimic the PDF */
+  .w-10 { width:10%; } .w-15{ width:15%; } .w-20{ width:20%; } .w-25{ width:25%; } .w-30{ width:30%; }
+  .w-40{ width:40%; } .w-50{ width:50%; } .w-60{ width:60%; } .w-70{ width:70%; } .w-100{ width:100%; }
+
+  /* small inputs inline */
+  .inline { display:flex; gap:8px; align-items:center; }
+
+  /* table-like blocks */
+  .table { border-collapse: collapse; width:100%; margin-top:8px; }
+  .table th, .table td {
+    border:1px solid #d6e0ef; padding:6px; font-size:13px; text-align:left;
+  }
+  .table th { background:#f3f7fb; font-weight:700; color:#0b2e66; }
+
+  /* signature box */
+  .sig { border:1px dashed #bfcbdc; padding:8px; min-height:56px; border-radius:4px; background:#fbfdff; }
+
+  /* actions */
+  .controls { display:flex; gap:8px; margin-top:12px; }
+  button { background:#0b4fa1; color:white; border:none; padding:8px 12px; border-radius:6px; cursor:pointer; font-size:13px; }
+  button.secondary { background:#6b7280; }
+
+  /* print styles */
+  @media print {
+    body { background:white; }
+    .paper { box-shadow:none; margin:0; padding:8mm; }
+    .controls { display:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="paper">
+  <h1 class="form-title">DEPARTMENT OF MINERAL RESOURCES & ENERGY</h1>
+  <p class="meta">FORM 33 — RETAIL LICENCE ANNUAL INFORMATION SUBMISSION (Replica — interactive HTML)</p>
+
+  <form id="dmreForm">
+
+    <!-- Section A: License / Site Details -->
+    <div class="section" id="section-a">
+      <div class="title">SECTION A — LICENCE / SITE DETAILS</div>
+
+      <div class="row">
+        <div class="col w-60">
+          <label class="label" for="registered_name">Registered company / licence holder name</label>
+          <input id="registered_name" name="registered_name" type="text" />
+        </div>
+        <div class="col w-40">
+          <label class="label" for="trading_name">Trading / site name</label>
+          <input id="trading_name" name="trading_name" type="text" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col w-25">
+          <label class="label" for="retail_licence">Retail licence number</label>
+          <input id="retail_licence" name="retail_licence" type="text" />
+        </div>
+        <div class="col w-25">
+          <label class="label" for="wholesale_licence">Wholesale licence number</label>
+          <input id="wholesale_licence" name="wholesale_licence" type="text" />
+        </div>
+        <div class="col w-25">
+          <label class="label" for="license_type">Licence type</label>
+          <select id="license_type" name="license_type">
+            <option value="">— choose —</option>
+            <option value="retail">Retail</option>
+            <option value="wholesale">Wholesale</option>
+            <option value="both">Both</option>
+          </select>
+        </div>
+        <div class="col w-25">
+          <label class="label" for="reporting_year">Reporting year</label>
+          <input id="reporting_year" name="reporting_year" type="number" min="1900" max="2100" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col w-70">
+          <label class="label" for="site_address">Site physical address</label>
+          <input id="site_address" name="site_address" type="text" />
+        </div>
+        <div class="col w-30">
+          <label class="label" for="postal_code">Postal code</label>
+          <input id="postal_code" name="postal_code" type="text" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col w-30">
+          <label class="label" for="municipality">Local municipality</label>
+          <input id="municipality" name="municipality" type="text" />
+        </div>
+        <div class="col w-30">
+          <label class="label" for="province">Province</label>
+          <select id="province" name="province">
+            <option value="">— choose —</option>
+            <option>Eastern Cape</option><option>Free State</option><option>Gauteng</option>
+            <option>KwaZulu-Natal</option><option>Limpopo</option><option>Mpumalanga</option>
+            <option>Northern Cape</option><option>North West</option><option>Western Cape</option>
+          </select>
+        </div>
+        <div class="col w-40">
+          <label class="label" for="site_coords">Site coordinates (lat, long)</label>
+          <input id="site_coords" name="site_coords" type="text" placeholder="e.g. -25.7461, 28.1881" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Section B: Contact person -->
+    <div class="section" id="section-b">
+      <div class="title">SECTION B — CONTACT PERSON</div>
+
+      <div class="row">
+        <div class="col w-33">
+          <label class="label" for="contact_first">Contact person - First name</label>
+          <input id="contact_first" name="contact_first" type="text" />
+        </div>
+        <div class="col w-33">
+          <label class="label" for="contact_last">Contact person - Surname</label>
+          <input id="contact_last" name="contact_last" type="text" />
+        </div>
+        <div class="col w-34">
+          <label class="label" for="contact_position">Position / capacity</label>
+          <input id="contact_position" name="contact_position" type="text" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col w-25">
+          <label class="label" for="contact_tel">Telephone (landline)</label>
+          <input id="contact_tel" name="contact_tel" type="text" />
+        </div>
+        <div class="col w-25">
+          <label class="label" for="contact_mobile">Mobile</label>
+          <input id="contact_mobile" name="contact_mobile" type="text" />
+        </div>
+        <div class="col w-50">
+          <label class="label" for="contact_email">Email</label>
+          <input id="contact_email" name="contact_email" type="email" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Section C: Fuel Volumes -->
+    <div class="section" id="section-c">
+      <div class="title">SECTION C — FUEL VOLUMES (LITRES)</div>
+
+      <table class="table" aria-describedby="fuelVolumes">
+        <thead>
+          <tr>
+            <th style="width:40%;">Product</th>
+            <th style="width:30%;">Litres sold during reporting year</th>
+            <th style="width:30%;">Notes / brand or remarks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Petrol (Unleaded)</td>
+            <td><input type="number" name="vol_unleaded" min="0" step="1" /></td>
+            <td><input type="text" name="note_unleaded" /></td>
+          </tr>
+          <tr>
+            <td>Diesel 50ppm</td>
+            <td><input type="number" name="vol_diesel_50" min="0" step="1" /></td>
+            <td><input type="text" name="note_diesel_50" /></td>
+          </tr>
+          <tr>
+            <td>Diesel 500ppm</td>
+            <td><input type="number" name="vol_diesel_500" min="0" step="1" /></td>
+            <td><input type="text" name="note_diesel_500" /></td>
+          </tr>
+          <tr>
+            <td>LPG (if applicable)</td>
+            <td><input type="number" name="vol_lpg" min="0" step="1" /></td>
+            <td><input type="text" name="note_lpg" /></td>
+          </tr>
+          <tr>
+            <td>Lubricants (litres)</td>
+            <td><input type="number" name="vol_lubes" min="0" step="1" /></td>
+            <td><input type="text" name="note_lubes" /></td>
+          </tr>
+          <tr>
+            <td>Other petroleum products</td>
+            <td><input type="number" name="vol_other" min="0" step="1" /></td>
+            <td><input type="text" name="note_other" /></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top:10px; display:flex; gap:12px; align-items:center;">
+        <label class="label" style="min-width:200px;">Total litres (auto-calculated)</label>
+        <input id="total_litres" name="total_litres" type="number" readonly />
+        <small style="color:#475569; font-size:12px;">(calculated from the fields above)</small>
+      </div>
+    </div>
+
+    <!-- Section D: Storage Tanks -->
+    <div class="section" id="section-d">
+      <div class="title">SECTION D — STORAGE TANKS & CAPACITY</div>
+
+      <p style="margin:6px 0 8px; color:#475569; font-size:12px;">List each storage tank on the site</p>
+
+      <table class="table" id="tanksTable">
+        <thead>
+          <tr>
+            <th>Tank ref / ID</th>
+            <th>Type (UG/Above)</th>
+            <th>Product</th>
+            <th>Capacity (Litres)</th>
+            <th>Bunded?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- JS will populate initial rows -->
+        </tbody>
+      </table>
+
+      <div style="margin-top:8px;">
+        <button type="button" id="addTankBtn">+ Add tank</button>
+        <button type="button" id="removeTankBtn" class="secondary">Remove last</button>
+      </div>
+    </div>
+
+    <!-- Section E: Environmental & Safety -->
+    <div class="section" id="section-e">
+      <div class="title">SECTION E — ENVIRONMENTAL & SAFETY</div>
+
+      <div class="row">
+        <div class="col w-50">
+          <label class="label" for="env_officer">Environmental responsible person</label>
+          <input id="env_officer" name="env_officer" type="text" />
+        </div>
+        <div class="col w-50">
+          <label class="label" for="spill_plan">Spill contingency plan available?</label>
+          <select id="spill_plan" name="spill_plan">
+            <option value="">— choose —</option><option value="yes">Yes</option><option value="no">No</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col w-100">
+          <label class="label" for="safety_notes">Safety & compliance notes (fire, bunding, SABS certs)</label>
+          <textarea id="safety_notes" name="safety_notes"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section F: Declaration -->
+    <div class="section" id="section-f">
+      <div class="title">SECTION F — DECLARATION</div>
+
+      <div class="row">
+        <div class="col w-50">
+          <label class="label" for="declarant_name">Name of declarant</label>
+          <input id="declarant_name" name="declarant_name" type="text" />
+        </div>
+        <div class="col w-50">
+          <label class="label" for="declarant_position">Position / capacity</label>
+          <input id="declarant_position" name="declarant_position" type="text" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col w-25">
+          <label class="label" for="declaration_date">Date</label>
+          <input id="declaration_date" name="declaration_date" type="date" />
+        </div>
+        <div class="col w-75">
+          <label class="label">Signature (type full name to sign)</label>
+          <div class="sig"><input id="signature_text" name="signature_text" type="text" style="border:none; width:100%; font-size:14px;"/></div>
+        </div>
+      </div>
+
+      <p style="font-size:12px; color:#475569; margin-top:6px;">
+        I declare that the information provided in this return is true and correct to the best of my knowledge.
+      </p>
+    </div>
+
+    <!-- Footer with metadata -->
+    <div class="section" id="footer">
+      <div class="row">
+        <div class="col w-50">
+          <label class="label" for="prepared_by">Prepared by</label>
+          <input id="prepared_by" name="prepared_by" type="text" />
+        </div>
+        <div class="col w-25">
+          <label class="label" for="prepared_tel">Telephone</label>
+          <input id="prepared_tel" name="prepared_tel" type="text" />
+        </div>
+        <div class="col w-25">
+          <label class="label" for="prepared_email">Email</label>
+          <input id="prepared_email" name="prepared_email" type="email" />
+        </div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button type="button" id="downloadPdfBtn">Download PDF</button>
+      <button type="button" id="resetBtn" class="secondary">Reset form</button>
+    </div>
+
+  </form>
+</div>
+
+<!-- html2pdf for client side PDF export -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+  // Populate a couple of tank rows initially
+  const tanksTableBody = document.querySelector('#tanksTable tbody');
+  let tankIndex = 0;
+  function addTankRow(data = {}) {
+    tankIndex++;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td><input type="text" name="tank_${tankIndex}_ref" value="${data.ref||('T'+tankIndex)}" /></td>
+      <td>
+        <select name="tank_${tankIndex}_type">
+          <option value="UG">Underground</option>
+          <option value="Above">Above ground</option>
+        </select>
+      </td>
+      <td><input type="text" name="tank_${tankIndex}_product" value="${data.product||''}" /></td>
+      <td><input type="number" name="tank_${tankIndex}_capacity" value="${data.capacity||0}" min="0" step="1" /></td>
+      <td>
+        <select name="tank_${tankIndex}_bunded">
+          <option value="">—</option><option value="yes">Yes</option><option value="no">No</option>
+        </select>
+      </td>
+    `;
+    tanksTableBody.appendChild(tr);
+  }
+
+  // add two example tanks to start
+  addTankRow({ref:'T1', product:'Diesel', capacity:20000});
+  addTankRow({ref:'T2', product:'Petrol', capacity:15000});
+
+  document.getElementById('addTankBtn').addEventListener('click', ()=> addTankRow());
+  document.getElementById('removeTankBtn').addEventListener('click', ()=> {
+    if (tanksTableBody.lastElementChild) tanksTableBody.removeChild(tanksTableBody.lastElementChild);
+  });
+
+  // auto-calc totals for litres
+  function calcTotals() {
+    const fields = ['vol_unleaded','vol_diesel_50','vol_diesel_500','vol_lpg','vol_lubes','vol_other'];
+    let total = 0;
+    fields.forEach(name=>{
+      const el = document.querySelector(`[name="${name}"]`);
+      if(!el) return;
+      const val = parseFloat(el.value) || 0;
+      total += val;
+    });
+    document.getElementById('total_litres').value = Math.round(total);
+  }
+  // bind changes
+  ['vol_unleaded','vol_diesel_50','vol_diesel_500','vol_lpg','vol_lubes','vol_other'].forEach(n=>{
+    document.addEventListener('input', (e)=>{
+      if(e.target && e.target.name === n) calcTotals();
+    });
+  });
+
+  // Download PDF (html2pdf)
+  document.getElementById('downloadPdfBtn').addEventListener('click', ()=> {
+    const element = document.querySelector('.paper');
+    const opt = {
+      margin:       [10, 10, 10, 10], // mm
+      filename:     'DMRE_Form33_filled.pdf',
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 2, useCORS: true },
+      jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+    const btn = document.getElementById('downloadPdfBtn');
+    btn.disabled = true; btn.textContent = 'Preparing PDF...';
+    setTimeout(()=>{
+      html2pdf().set(opt).from(element).save().then(()=>{
+        btn.disabled = false; btn.textContent = 'Download PDF';
+      }).catch(err=>{
+        alert('PDF export failed: '+err);
+        btn.disabled = false; btn.textContent = 'Download PDF';
+      });
+    }, 80);
+  });
+
+  // Reset
+  document.getElementById('resetBtn').addEventListener('click', ()=>{
+    if(!confirm('Reset form?')) return;
+    document.getElementById('dmreForm').reset();
+    // reset tanks
+    tanksTableBody.innerHTML='';
+    tankIndex=0;
+    addTankRow({ref:'T1', product:'Diesel', capacity:20000});
+    addTankRow({ref:'T2', product:'Petrol', capacity:15000});
+    calcTotals();
+  });
+
+  // initialize totals
+  calcTotals();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>DMRE Form 33 — HTML Version</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    :root{
+      --page-width: 800px;
+      --gutter: 18px;
+      --label-w: 220px;
+      --accent: #004a99;
+    }
+    body{
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:#f3f4f6;
+      padding:20px;
+      color:#111827;
+    }
+    .page {
+      max-width: var(--page-width);
+      margin: 0 auto 24px;
+      background: white;
+      box-shadow: 0 6px 18px rgba(15,23,42,0.08);
+      padding: 18px;
+      border-radius: 8px;
+    }
+    h1{ font-size:18px; margin:0 0 12px; color:var(--accent) }
+    h2{ font-size:14px; margin:12px 0; color:#0f172a }
+    form{ display:block; }
+    .row { display:flex; gap:16px; margin-bottom:10px; align-items:center; flex-wrap:wrap; }
+    .field { display:flex; gap:8px; align-items:center; width:100%; }
+    label { min-width: var(--label-w); font-size:13px; color:#334155; }
+    input[type="text"], input[type="email"], input[type="number"], input[type="date"], select, textarea {
+      flex:1;
+      padding:8px 10px;
+      border:1px solid #e6e9ee;
+      border-radius:6px;
+      font-size:13px;
+      background: #fff;
+    }
+    textarea { min-height:80px; resize:vertical }
+    .two { width:48%; }
+    .three { width:32%; }
+    .small { width:150px; }
+    .actions { display:flex; gap:12px; margin-top:12px; }
+    button { background:var(--accent); color:white; border:none; padding:10px 14px; border-radius:8px; cursor:pointer; }
+    button.secondary { background: #6b7280; }
+    .section { border-top:1px dashed #e6e9ee; padding-top:12px; margin-top:12px; }
+    .help { font-size:12px; color:#64748b; margin-left: var(--label-w); }
+    @media (max-width:900px){
+      :root{ --label-w: 140px }
+      .two, .three { width:100% }
+    }
+    /* print */
+    @media print{
+      body{ background: white }
+      .page { box-shadow:none; border: none; }
+      .no-print { display:none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>DMRE Form 33 — Retail Licence Annual Information Submission (HTML)</h1>
+    <p style="margin:6px 0 18px; color:#475569; font-size:13px;">Fill the fields below. Use <strong>Download PDF</strong> to export a printable copy.</p>
+
+    <form id="form33">
+      <h2>Section A — Licence / Site Details</h2>
+
+      <div class="row">
+        <div class="field two">
+          <label for="registered_name">Registered company name</label>
+          <input id="registered_name" name="registered_name" type="text" />
+        </div>
+        <div class="field two">
+          <label for="trading_name">Trading / site name</label>
+          <input id="trading_name" name="trading_name" type="text" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field three">
+          <label for="retail_licence">Retail licence number</label>
+          <input id="retail_licence" name="retail_licence" type="text" />
+        </div>
+        <div class="field three">
+          <label for="wholesale_licence">Wholesale licence number</label>
+          <input id="wholesale_licence" name="wholesale_licence" type="text" />
+        </div>
+        <div class="field three">
+          <label for="reporting_year">Reporting year</label>
+          <input id="reporting_year" name="reporting_year" type="number" min="1900" max="2100" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="site_address">Site physical address</label>
+          <input id="site_address" name="site_address" type="text" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field two">
+          <label for="municipality">Local municipality</label>
+          <input id="municipality" name="municipality" type="text" />
+        </div>
+        <div class="field two">
+          <label for="province">Province</label>
+          <select id="province" name="province">
+            <option value="">— choose —</option>
+            <option>Eastern Cape</option>
+            <option>Free State</option>
+            <option>Gauteng</option>
+            <option>KwaZulu-Natal</option>
+            <option>Limpopo</option>
+            <option>Mpumalanga</option>
+            <option>Northern Cape</option>
+            <option>North West</option>
+            <option>Western Cape</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Section B — Contact person</h2>
+
+        <div class="row">
+          <div class="field two">
+            <label for="contact_first">Contact person - First name</label>
+            <input id="contact_first" name="contact_first" type="text" />
+          </div>
+          <div class="field two">
+            <label for="contact_last">Contact person - Surname</label>
+            <input id="contact_last" name="contact_last" type="text" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field three">
+            <label for="contact_tel">Telephone (landline)</label>
+            <input id="contact_tel" name="contact_tel" type="text" />
+          </div>
+          <div class="field three">
+            <label for="contact_mobile">Mobile</label>
+            <input id="contact_mobile" name="contact_mobile" type="text" />
+          </div>
+          <div class="field three">
+            <label for="contact_email">Email</label>
+            <input id="contact_email" name="contact_email" type="email" />
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Section C — Fuel Volumes (litres)</h2>
+
+        <div class="row">
+          <div class="field three">
+            <label for="unleaded">Petrol (Unleaded) litres sold</label>
+            <input id="unleaded" name="unleaded" type="number" min="0" step="1" />
+          </div>
+          <div class="field three">
+            <label for="diesel_50">Diesel 50ppm litres sold</label>
+            <input id="diesel_50" name="diesel_50" type="number" min="0" step="1" />
+          </div>
+          <div class="field three">
+            <label for="diesel_500">Diesel 500ppm litres sold</label>
+            <input id="diesel_500" name="diesel_500" type="number" min="0" step="1" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field two">
+            <label for="lubricants_litres">Lubricants litres sold (if applicable)</label>
+            <input id="lubricants_litres" name="lubricants_litres" type="number" min="0" step="1" />
+          </div>
+          <div class="field two">
+            <label for="other_products">Other petroleum product litres</label>
+            <input id="other_products" name="other_products" type="text" />
+          </div>
+        </div>
+
+      </div>
+
+      <div class="section">
+        <h2>Section D — Storage tanks & capacity</h2>
+
+        <div id="tanks_container">
+          <!- Template for tank rows 
+        </div>
+
+        <div style="margin-top:8px;">
+          <button type="button" id="addTank" class="secondary">+ Add storage tank</button>
+          <span class="help">Add tanks (type, capacity L, product type)</span>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Section E — Environmental & Safety</h2>
+
+        <div class="row">
+          <div class="field two">
+            <label for="environmental_officer">Environmental officer / responsible person</label>
+            <input id="environmental_officer" name="environmental_officer" type="text" />
+          </div>
+          <div class="field two">
+            <label for="has_spill_plan">Spill contingency plan available?</label>
+            <select id="has_spill_plan" name="has_spill_plan">
+              <option value="">— choose —</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="safety_compliance">Safety compliance notes</label>
+            <textarea id="safety_compliance" name="safety_compliance" placeholder="e.g. fire extinguishers, bunding, SABS certificates..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Section F — Declaration</h2>
+
+        <div class="row">
+          <div class="field two">
+            <label for="declarant_name">Name of declarant</label>
+            <input id="declarant_name" name="declarant_name" type="text" />
+          </div>
+          <div class="field two">
+            <label for="declarant_position">Position / capacity</label>
+            <input id="declarant_position" name="declarant_position" type="text" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field three">
+            <label for="declaration_date">Date</label>
+            <input id="declaration_date" name="declaration_date" type="date" />
+          </div>
+          <div class="field three">
+            <label for="signature_text">Signature (type full name)</label>
+            <input id="signature_text" name="signature_text" type="text" />
+          </div>
+        </div>
+
+        <div style="margin-top:8px;">
+          <label style="min-width: var(--label-w)"></label>
+          <small class="help">By typing your name above you accept this submission as an electronic signature.</small>
+        </div>
+      </div>
+
+      <div style="margin-top:12px;">
+        <label style="min-width: var(--label-w)"></label>
+        <small class="help">All fields can be exported to PDF. Field names are consistent and ready to be auto-filled by JS.</small>
+      </div>
+
+      <div class="actions no-print">
+        <button type="button" id="downloadPDF">Download PDF</button>
+        <button type="button" id="reset" class="secondary">Reset form</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script>
+    // --- Simple dynamic tanks list
+    const tanksContainer = document.getElementById('tanks_container');
+    const addTankBtn = document.getElementById('addTank');
+
+    function createTankRow(index = 1, data = {}) {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'row';
+      wrapper.innerHTML = `
+        <div class="field three">
+          <label for="tank_${index}_type">Tank ${index} type</label>
+          <input id="tank_${index}_type" name="tank_${index}_type" type="text" value="${data.type || ''}" />
+        </div>
+        <div class="field three">
+          <label for="tank_${index}_capacity">Capacity (L)</label>
+          <input id="tank_${index}_capacity" name="tank_${index}_capacity" type="number" min="0" step="1" value="${data.capacity || ''}" />
+        </div>
+        <div class="field three">
+          <label for="tank_${index}_product">Product</label>
+          <input id="tank_${index}_product" name="tank_${index}_product" type="text" value="${data.product || ''}" />
+        </div>
+      `;
+      return wrapper;
+    }
+
+    // add 2 example tank rows by default
+    let tankCount = 0;
+    function addTank(data) {
+      tankCount++;
+      tanksContainer.appendChild(createTankRow(tankCount, data));
+    }
+    addTank({type:'Underground', capacity:20000, product:'Diesel'});
+    addTank({type:'Underground', capacity:15000, product:'Petrol'});
+
+    addTankBtn.addEventListener('click', () => addTank());
+
+    // --- PDF download
+    document.getElementById('downloadPDF').addEventListener('click', () => {
+      const page = document.querySelector('.page');
+      // tweak options as needed
+      const opt = {
+        margin:       10,
+        filename:     'DMRE_Form33_filled.pdf',
+        image:        { type: 'jpeg', quality: 0.95 },
+        html2canvas:  { scale: 2 }, // improve quality
+        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      };
+      // disable button while creating
+      const btn = document.getElementById('downloadPDF');
+      btn.disabled = true;
+      btn.textContent = 'Preparing PDF...';
+      setTimeout(() => {
+        html2pdf().set(opt).from(page).save()
+        .then(() => {
+          btn.disabled = false;
+          btn.textContent = 'Download PDF';
+        })
+        .catch((err) => {
+          console.error(err);
+          alert('PDF generation failed: ' + err);
+          btn.disabled = false;
+          btn.textContent = 'Download PDF';
+        });
+      }, 80);
+    });
+
+    // Reset
+    document.getElementById('reset').addEventListener('click', () => {
+      if(!confirm('Reset all fields?')) return;
+      document.getElementById('form33').reset();
+      // clear and re-add default tanks
+      tanksContainer.innerHTML = '';
+      tankCount = 0;
+      addTank({type:'Underground', capacity:20000, product:'Diesel'});
+      addTank({type:'Underground', capacity:15000, product:'Petrol'});
+    });
+
+    // OPTIONAL: Example function to export the form data as JSON (for auto-fill)
+    function getFormData() {
+      const data = {};
+      const elements = document.getElementById('form33').elements;
+      for (let el of elements) {
+        if (!el.name) continue;
+        if (el.type === 'checkbox') data[el.name] = el.checked;
+        else data[el.name] = el.value;
+      }
+      return data;
+    }
+
+    // Example: console log data on unload for debugging
+    window.addEventListener('beforeunload', () => {
+      console.log('Form data snapshot', getFormData());
+    });
+  </script>
+</body>
+</html>-->
