@@ -1,0 +1,20 @@
+{
+    "name": "PetroCompliance",
+    "short_name": "PetroCompliance",
+    "description": "Automate your annual returns and license fee payments for petroleum stations and wholesalers.",
+    "icons": [
+        {
+            "src": "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/691276f1b49376b22d5fb3e1/aab5f70fc_logo.png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/691276f1b49376b22d5fb3e1/aab5f70fc_logo.png",
+            "sizes": "512x512"
+        }
+    ],
+    "start_url": "https://petro-compliance-2d5fb3e1.base44.app",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#ffffff",
+    "scope": "https://petro-compliance-2d5fb3e1.base44.app"
+}

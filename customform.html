@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+  .container {
+    display: flex;
+    /*gap: 20px;  space between columns */
+    
+  }
+  .column {
+    flex: 1;
+    /* padding: 10px; */
+  }
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr;       /* one column layout by default */
+    gap: 20px;
+  }
+
+  .row-full {
+    background: #d9e6ff;
+    padding: 15px;
+  }
+
+  .row-two-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;   /* two equal columns */
+    /*gap: 20px;*/
+  }
+
+  .col {
+    background: #f2f2f2;
+    padding: 15px;
+    border-style: solid;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: repeat(11, 1fr); /* 11 equal columns */
+    /*gap: 5px;  space between cells */
+  }
+  .cell {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid black;
+  }
+
+  .cellsize{
+    padding: 2px 0px !important;
+    max-width: 5px;
+  }
+
+  td{
+        border: 1px solid black;
+        border-collapse: collapse;
+        text-align: center;
+  }
+</style>
+	<title>
+		the form
+	</title>
+</head>
+<body>
+
+	<div>
+		<div style="border-style: solid;">
+			<div class="container">
+  <div class="column"><img src="./formassets/dmrelogo.png" style="align-content: left;"></div>
+  <div class="column" style="text-align: right;">DMRE 33</div>
+</div>
+		
+		<div>
+			<div class="layout">
+
+  <!-- First Row (full width) -->
+  <div class="row-full">
+    RETAIL LICENCE ANNUAL INFORMATION (SUBMISSION FORM)
+PETROLEUM PRODUCTS ACT 120 OF 1977 AS AMENDED - PETROLEUM PRODUCTS SITE AND RETAIL LICENCE
+REGULATIONS 2006
+  </div>
+
+  <!-- Second Row (two columns) -->
+  <div class="row-two-cols">
+    <div class="col" style="width: max-content;">
+    	<p>INSTRUCTIONS</p>
+    	<p>1. READ REGULATIONS BEFORE COMPLETING THIS APPLICATION FORM</p>
+    	<p>2. USE CAPITAL LETTERS AND WHERE APPLICABLE MARK WITH A .</p>
+    </div>
+    <div class="col">
+    	<p>
+    		PLEASE COMPLETE
+    	</p>
+    	<div>
+    		<p>SITE LICENCE NUMBER</p>
+    	<div class="row">
+  <div class="cell">1</div>
+  <div class="cell">2</div>
+  <div class="cell">3</div>
+  <div class="cell">4</div>
+  <div class="cell">5</div>
+  <div class="cell">6</div>
+  <div class="cell">7</div>
+  <div class="cell">8</div>
+  <div class="cell">9</div>
+  <div class="cell">10</div>
+  <div class="cell">11</div>
+</div>
+    	</div>
+    	<div>
+    		<p>RETAIL LICENCE NUMBER</p>
+    	<div class="row">
+  <div class="cell">1</div>
+  <div class="cell">2</div>
+  <div class="cell">3</div>
+  <div class="cell">4</div>
+  <div class="cell">5</div>
+  <div class="cell">6</div>
+  <div class="cell">7</div>
+  <div class="cell">8</div>
+  <div class="cell">9</div>
+  <div class="cell">10</div>
+  <div class="cell">11</div>
+</div>
+    	</div>
+    	
+    </div>
+  </div>
+
+</div>
+		</div>
+		<div>
+			<p>
+				SECTION 1: COMPLETE LICENSEE’S PARTICULARS
+			</p>
+			<div class="container">
+  <div class="column" style="border-style: solid;max-width: 10%;">REGISTERED
+NAME
+IN FULL</div>
+<table class="column" style="border: 1px solid black; border-collapse: collapse;">
+  <tr style="border: 1px solid black; border-collapse: collapse;">
+    <td>1</td>
+    <td>2</td>
+    <td>3</td>
+    <td>4</td>
+    <td>5</td>
+    <td>6</td>
+    <td>7</td>
+    <td>8</td>
+    <td>9</td>
+    <td>10</td>
+    <td>11</td>
+    <td>12</td>
+    <td>13</td>
+    <td>14</td>
+    <td>15</td>
+    <td>16</td>
+    <td>17</td>
+    <td>18</td>
+    <td>19</td>
+    <td>20</td>
+    <td>21</td>
+    <td>22</td>
+  </tr>
+</table>
+  <!--<div class="column" style="text-align: right;border-style: solid">
+  	<div class="row">
+  <div class="cell cellsize">1</div>
+  <div class="cell cellsize">2</div>
+  <div class="cell cellsize">3</div>
+  <div class="cell cellsize">4</div>
+  <div class="cell cellsize">5</div>
+  <div class="cell cellsize">6</div>
+  <div class="cell cellsize">7</div>
+  <div class="cell cellsize">8</div>
+  <div class="cell cellsize">9</div>
+  <div class="cell cellsize">10</div>
+  <div class="cell cellsize">11</div>
+  <div class="cell cellsize">12</div>
+  <div class="cell cellsize">12</div>
+  <div class="cell cellsize">14</div>
+  <div class="cell cellsize">15</div>
+  <div class="cell cellsize">16</div>
+  <div class="cell cellsize">17</div>
+  <div class="cell cellsize">18</div>
+  <div class="cell cellsize">19</div>
+  <div class="cell cellsize">20</div>
+  <div class="cell cellsize">21</div>
+  <div class="cell cellsize">22</div>
+</div>
+  </div>-->
+</div>
+		</div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+</div>
+</body>
+</html>
