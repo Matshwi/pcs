@@ -2155,7 +2155,9 @@ const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const paramValue = urlParams.get('uid');
 
-
+if(paramValue!){
+    window.location.href = `./login/index.html`;
+}
 
 
       const { data, error } = await supabase
