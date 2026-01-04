@@ -1960,7 +1960,7 @@
                     <div class="flex-1 overflow-auto">
                         <div class="p-6 md:p-8 space-y-8">
                             <div class="bg-gradient-to-r from-[#1e3a5f] via-[#2d5f3f] to-[#1e3a5f] rounded-2xl p-8 text-white shadow-xl">
-                                <h1 class="text-3xl md:text-4xl font-bold mb-2">Good Morning, User!</h1>
+                                <h1 class="text-3xl md:text-4xl font-bold mb-2" id="greeting"></h1>
                                 <p class="text-slate-200 text-lg">Welcome back to your Petroleum Compliance Portal</p>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -2143,6 +2143,60 @@
         </div>
     </div>
             <script type="module">
+
+import { createClient } from "https://esm.sh/@supabase/supabase-js";
+
+const supabaseUrl = "https://bhzutkztpztbdeniggyv.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJoenV0a3p0cHp0YmRlbmlnZ3l2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU0OTQ2MDEsImV4cCI6MjA4MTA3MDYwMX0.skUpRXt7SNLV-c1o-jRcriJY6sd4ZoJwagELp-q6ES8";
+
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const paramValue = urlParams.get('uid');
+
+
+
+
+      const { data, error } = await supabase
+    .from("PCUsers")
+    .select("*").eq(paramValue, id)
+    .single()
+ // filter
+
+
+    
+
+
+data.forEach((data, index) => {
+
+    console.log(data);
+
+    const hour = new Date().getHours();
+  let greeting;
+
+  if (hour >= 5 && hour < 12) {
+    greeting = "Good morning ☀️";
+     document.getElementById("greeting").textContent = `${greeting}, ${data.name}`;
+  } else if (hour >= 12 && hour < 17) {
+    greeting = "Good afternoon 🌤️";
+    document.getElementById("greeting").textContent = `${greeting}, ${data.name}`;
+  } else if (hour >= 17 && hour < 21) {
+    greeting = "Good evening 🌇";
+    document.getElementById("greeting").textContent = `${greeting}, ${data.name}`;
+  } else {
+    greeting = "Good night 🌙";
+    document.getElementById("greeting").textContent = `${greeting}, ${data.name}`;
+  }
+
+
+})
+
+
+
+
+
+                /*
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js";
@@ -2187,7 +2241,7 @@
         } else {
             console.log("No items found at this location.");
         }
-    });
+    });*/
 </script>
 </body>
 <wordtune-app-toolbar data-wxt-shadow-root="" style="direction: ltr;">
