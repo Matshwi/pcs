@@ -2162,7 +2162,7 @@ if(!paramValue){
 
       const { data, error } = await supabase
     .from("PCUsers")
-    .select("*").eq(paramValue, id)
+    .select("*").eq('id', paramValue)
     .single()
  // filter
 
