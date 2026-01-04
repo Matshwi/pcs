@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login V1</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic js-tilt" data-tilt>
+					<img src="images/img-01.png" alt="IMG">
+				</div>
+
+				<form class="login100-form validate-form">
+					<span class="login100-form-title" id="loginstate">
+						
+					</span>
+
+					<div class="wrap-input100 validate-input" data-validate = "Valid name is required: company or individuals name to identify your account" id="regonly">
+						<input class="input100" type="text" name="Name" placeholder="Name" id="Iname">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input100" type="text" name="email" placeholder="Email" id="email_address">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input class="input100" type="password" name="pass" placeholder="Password" id="password">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+					
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn" id="Loginreg">
+							
+						</button>
+					</div>
+
+					<div class="text-center p-t-12" id="hideonreg">
+						<span class="txt1">
+							Forgot
+						</span>
+						<a class="txt2" href="#">
+							Username / Password?
+						</a>
+					</div>
+
+					<div class="text-center p-t-136" id="hideon">
+						<a class="txt2" href="index.html?register=newuser">
+							Create your Account
+							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	
+
+	
+<!--===============================================================================================-->	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/tilt/tilt.jquery.min.js"></script>
+	<script type="module">
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+
+		document.getElementById('loginstate').innerHTML = "Member Login";
+        document.getElementById('Loginreg').innerHTML = "Login";
+        document.getElementById('regonly').style.visibility = "hidden";
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const paramValue = urlParams.get('register');
+
+  if (paramValue) {
+
+  	document.getElementById('loginstate').innerHTML = "Lets get you in";
+  	
+  	document.getElementById('hideon').style.visibility = "hidden";
+  	document.getElementById('Loginreg').innerHTML = "Register";
+  }
+
+import { createClient } from "https://esm.sh/@supabase/supabase-js";
+
+const supabaseUrl = "https://bhzutkztpztbdeniggyv.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJoenV0a3p0cHp0YmRlbmlnZ3l2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU0OTQ2MDEsImV4cCI6MjA4MTA3MDYwMX0.skUpRXt7SNLV-c1o-jRcriJY6sd4ZoJwagELp-q6ES8";
+
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+
+
+var reguser = document.getElementById("Loginreg");
+
+  reguser.addEventListener("click", async function(event) {
+    event.preventDefault();
+
+
+var name = document.getElementById("Iname").value;
+var password = document.getElementById("password").value;
+var email_address = document.getElementById("email_address").value;
+
+
+if (paramValue) {
+  const { data, error } = await supabase.from("PCUsers").insert([
+      {
+    name: name,
+    email_address: email_address,
+    password: password
+      }
+    ]);
+
+  if (error) {
+    console.error("Insert error:", error);
+  } else {
+    console.log("Data saved successfully!");
+    window.location.href = `../index.html?uid=${data.id}`;
+  }
+}else if(!paramValue){
+console.log("tag your it");
+
+
+	  const { data, error } = await supabase
+    .from("PCUsers")
+    .select("*") // filter
+
+
+
+data.forEach((data, index) => {
+
+	console.log(data);
+
+    const numberOfItems = Object.keys(data).length;
+    if (data.email_address == email_address && data.password == password) {
+    	window.location.href = `../index.html?uid=${data.id}`;
+    }
+
+})
+}else{
+	console.log("something went wrong");
+}
+})
+
+
+	</script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+</body>
+</html>
