@@ -49,7 +49,7 @@
 							<i class="fa fa-envelope" aria-hidden="true"></i>
 						</span>
 					</div>
-					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+					<div class="wrap-input100 validate-input" data-validate = "Password is required" id="onforgotpass">
 						<input class="input100" type="password" name="pass" placeholder="Password" id="password">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
@@ -67,8 +67,8 @@
 						<span class="txt1">
 							Forgot
 						</span>
-						<a class="txt2" href="#">
-							Username / Password?
+						<a class="txt2" href="index.html?forgot=password">
+						 Password?
 						</a>
 					</div>
 
@@ -106,6 +106,7 @@
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const paramValue = urlParams.get('register');
+  const forgotpassword = urlParams.get('forgot');
 
   if (paramValue) {
 
@@ -113,6 +114,15 @@
   	
   	document.getElementById('hideon').style.visibility = "hidden";
   	document.getElementById('Loginreg').innerHTML = "Register";
+  }
+
+    if (forgotpassword) {
+
+  	document.getElementById('loginstate').innerHTML = "Please insert the email you registered with and if the email exist we will send you and email with your password";
+  	document.getElementById('onforgotpass').style.visibility = "hidden";
+  	document.getElementById('hideon').style.visibility = "hidden";
+  	document.getElementById('Loginreg').innerHTML = "Submit";
+
   }
 
 import { createClient } from "https://esm.sh/@supabase/supabase-js";
@@ -130,46 +140,62 @@ var reguser = document.getElementById("Loginreg");
     event.preventDefault();
 
 
-var name = document.getElementById("Iname").value;
+var full_name = document.getElementById("Iname").value;
 var password = document.getElementById("password").value;
 var email_address = document.getElementById("email_address").value;
 
 
 if (paramValue) {
-  const { data, error } = await supabase.from("PCUsers").insert([
-      {
-    name: name,
-    email_address: email_address,
-    password: password
-      }
-    ]);
-
-  if (error) {
-    console.error("Insert error:", error);
-  } else {
-    console.log("Data saved successfully!");
-    window.location.href = `../index.html?uid=${data.id}`;
-  }
-}else if(!paramValue){
-console.log("tag your it");
-
-
-	  const { data, error } = await supabase
-    .from("PCUsers")
-    .select("*") // filter
-
-
-
-data.forEach((data, index) => {
-
-	console.log(data);
-
-    const numberOfItems = Object.keys(data).length;
-    if (data.email_address == email_address && data.password == password) {
-    	window.location.href = `../index.html?uid=${data.id}`;
-    }
-
+const { data, error } = await supabase.auth.signUp({
+  email_address,
+  password
 })
+
+if (error) throw error
+
+const userId = data.user.id
+
+// Insert profile
+await supabase.from('profiles').insert({
+  id: userId,
+  full_name
+}).then(()=>{
+        window.location.href = `../index.html?uid=${userId}`;
+      }).catch(err=>{
+        alert(err);
+      });
+
+
+
+}else if(!paramValue){
+const { data, error } = await supabase.auth.signInWithPassword({
+  email_address,
+  password
+}).then(()=>{
+        window.location.href = `../index.html?uid=${data.user.id}`;
+      }).catch(err=>{
+        alert(err);
+      });
+
+
+
+}else if(!forgotpassword){
+  	await supabase.auth.resetPasswordForEmail(email, {
+  redirectTo: 'https://yourdomain.com/reset-password'
+})
+
+
+const { error } = await supabase.auth.updateUser({
+  password: password
+})
+
+if (error) {
+	alert(error);
+  
+}else if (!error) {
+console.log('Password updated successfully');
+}
+
 }else{
 	console.log("something went wrong");
 }
