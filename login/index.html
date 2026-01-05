@@ -169,19 +169,7 @@ await supabase.from('profiles').insert({
 
 
 
-}else if(!paramValue){
-const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
-  email,
-  password
-}).then(()=>{
-        window.location.href = `../index.html?uid=${authData.user.id}`;
-      }).catch(authError=>{
-        alert(authError);
-      });
-
-
-
-}else if(!forgotpassword){
+}else if(forgotpassword){
   	await supabase.auth.resetPasswordForEmail(email, {
   redirectTo: 'https://yourdomain.com/reset-password'
 })
@@ -199,7 +187,14 @@ console.log('Password updated successfully');
 }
 
 }else{
-	console.log("something went wrong");
+	const { data, error } = await supabase.auth.signInWithPassword({
+  email,
+  password
+}).then(()=>{
+        window.location.href = `../index.html?uid=${data.user.id}`;
+      }).catch(authError=>{
+        alert(authError);
+      });
 }
 })
 
