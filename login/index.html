@@ -147,7 +147,7 @@ var email = document.getElementById("email").value;
 
 if (paramValue) {
 
-	console.log(full_name, " after name is " password, " after password is " email);
+	console.log(full_name + " after name is " + password + " after password is " + email);
 const { data, error } = await supabase.auth.signUp({
   email,
   password
