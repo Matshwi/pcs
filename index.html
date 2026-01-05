@@ -2151,18 +2151,22 @@ const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-const queryString = window.location.search;
+const user = (await supabase.auth.getUser()).data.user
+
+
+/*const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const paramValue = urlParams.get('uid');
+  */
 
-if(!paramValue){
+if(!user){
     window.location.href = `./login/index.html`;
 }
 
 
       const { data, error } = await supabase
     .from("PCUsers")
-    .select("*").eq('id', paramValue)
+    .select("*").eq('id', user.id)
     .single()
  // filter
 
@@ -2173,16 +2177,16 @@ if(!paramValue){
 
   if (hour >= 5 && hour < 12) {
     greeting = "Good morning ☀️";
-     document.getElementById("greeting").textContent = `${greeting}, ${data.name}`;
+     document.getElementById("greeting").textContent = `${greeting}, ${data.full_name}`;
   } else if (hour >= 12 && hour < 17) {
     greeting = "Good afternoon 🌤️";
-    document.getElementById("greeting").textContent = `${greeting}, ${data.name}`;
+    document.getElementById("greeting").textContent = `${greeting}, ${data.full_name}`;
   } else if (hour >= 17 && hour < 21) {
     greeting = "Good evening 🌇";
-    document.getElementById("greeting").textContent = `${greeting}, ${data.name}`;
+    document.getElementById("greeting").textContent = `${greeting}, ${data.full_name}`;
   } else {
     greeting = "Good night 🌙";
-    document.getElementById("greeting").textContent = `${greeting}, ${data.name}`;
+    document.getElementById("greeting").textContent = `${greeting}, ${data.full_name}`;
   }
 
 
