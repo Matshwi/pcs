@@ -2157,12 +2157,14 @@ const user = (await supabase.auth.getUser()).data.user
 /*const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const paramValue = urlParams.get('uid');
+
+  const {
+  data: { user }
+} = await supabase.auth.getUser()
   */
 
 
-const {
-  data: { user }
-} = await supabase.auth.getUser()
+
 
 console.log(user);
 
