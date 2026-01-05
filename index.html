@@ -2159,12 +2159,15 @@ const user = (await supabase.auth.getUser()).data.user
   const paramValue = urlParams.get('uid');
   */
 
-if(!user){
-    window.location.href = `./login/index.html`;
-}
 
+const {
+  data: { user }
+} = await supabase.auth.getUser()
 
-      const { data, error } = await supabase
+console.log(user);
+
+if (user) {
+   const { data, error } = await supabase
     .from("PCUsers")
     .select("*").eq('id', user.id)
     .single()
@@ -2188,6 +2191,19 @@ if(!user){
     greeting = "Good night 🌙";
     document.getElementById("greeting").textContent = `${greeting}, ${data.full_name}`;
   }
+} else {
+  //window.location.href = `./login/index.html`;
+}
+
+
+     
+supabase.auth.onAuthStateChange((event, session) => {
+  if (session) {
+    console.log('User logged in:', session.user.id)
+  } else {
+    console.log('User not logged in')
+  }
+})
 
 
 
