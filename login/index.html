@@ -42,7 +42,7 @@
 							<i class="fa fa-envelope" aria-hidden="true"></i>
 						</span>
 					</div>
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz" id="checkmail">
 						<input class="input100" type="text" name="email" placeholder="Email" id="email">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
@@ -114,6 +114,7 @@
   	document.getElementById('regonly').style.visibility = "visible";
   	document.getElementById('hideon').style.visibility = "hidden";
   	document.getElementById('Loginreg').innerHTML = "Register";
+  	document.getElementById('hideonreg').style.visibility = "hidden";
   }
 
     if (forgotpassword) {
@@ -122,6 +123,7 @@
   	document.getElementById('onforgotpass').style.visibility = "hidden";
   	document.getElementById('hideon').style.visibility = "hidden";
   	document.getElementById('Loginreg').innerHTML = "Submit";
+  	document.getElementById('hideonreg').style.visibility = "hidden";
 
   }
 
@@ -160,7 +162,10 @@ const { error } = await supabase.auth.signUp({
 
 
         window.location.href = `../index.html`;
-     
+        document.getElementById('loginstate').innerHTML = "“We’ve sent you a confirmation link. Please verify your email to continue.”";
+     document.getElementById('regonly').style.visibility = "hidden";
+     document.getElementById('checkmail').style.visibility = "hidden";
+  	document.getElementById('onforgotpass').style.visibility = "hidden";
 
 
 
