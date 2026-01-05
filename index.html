@@ -2170,7 +2170,7 @@ console.log(user);
 
 if (user) {
    const { data, error } = await supabase
-    .from("PCUsers")
+    .from("profiles")
     .select("*").eq('id', user.id)
     .single()
  // filter
