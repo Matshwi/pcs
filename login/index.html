@@ -170,13 +170,13 @@ await supabase.from('profiles').insert({
 
 
 }else if(!paramValue){
-const { data: profile} = await supabase.auth.signInWithPassword({
+const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
   email,
   password
 }).then(()=>{
-        window.location.href = `../index.html?uid=${profile.user.id}`;
-      }).catch(err=>{
-        alert(err);
+        window.location.href = `../index.html?uid=${authData.user.id}`;
+      }).catch(authError=>{
+        alert(authError);
       });
 
 
