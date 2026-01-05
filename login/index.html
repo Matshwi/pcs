@@ -189,7 +189,23 @@ console.log('Password updated successfully');
   email,
   password
 })
-        window.location.href = `../index.html}`;
+       
+
+        const { data, error } = await supabase.auth.signInWithPassword({
+  email,
+  password
+});
+
+if (error) {
+  alert(error.message); // Display a more specific error message from Supabase
+} else if (data && data.user) { // Check if data and data.user are not null
+  window.location.href = `../index.html`;
+} else {
+  // Handle cases where there's no error but also no user data,
+  // which might indicate an unexpected response from Supabase.
+  alert('Sign-in failed or no user data returned.');
+}
+
 
 }
 })
