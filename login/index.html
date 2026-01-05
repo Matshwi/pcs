@@ -43,7 +43,7 @@
 						</span>
 					</div>
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email" placeholder="Email" id="email_address">
+						<input class="input100" type="text" name="email" placeholder="Email" id="email">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -142,12 +142,14 @@ var reguser = document.getElementById("Loginreg");
 
 var full_name = document.getElementById("Iname").value;
 var password = document.getElementById("password").value;
-var email_address = document.getElementById("email_address").value;
+var email = document.getElementById("email").value;
 
 
 if (paramValue) {
+
+	console.log(full_name, " after name is " password, " after password is " email);
 const { data, error } = await supabase.auth.signUp({
-  email_address,
+  email,
   password
 })
 
@@ -169,7 +171,7 @@ await supabase.from('profiles').insert({
 
 }else if(!paramValue){
 const { data, error } = await supabase.auth.signInWithPassword({
-  email_address,
+  email,
   password
 }).then(()=>{
         window.location.href = `../index.html?uid=${data.user.id}`;
