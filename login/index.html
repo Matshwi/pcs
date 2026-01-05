@@ -161,11 +161,9 @@ const userId = data.user.id
 await supabase.from('profiles').insert({
   id: userId,
   full_name
-}).then(()=>{
+})
         window.location.href = `../index.html?uid=${userId}`;
-      }).catch(err=>{
-        alert(err);
-      });
+     
 
 
 
@@ -190,11 +188,9 @@ console.log('Password updated successfully');
 	const { data, error } = await supabase.auth.signInWithPassword({
   email,
   password
-}).then(()=>{
+})
         window.location.href = `../index.html?uid=${data.user.id}`;
-      }).catch(authError=>{
-        alert(authError);
-      });
+
 }
 })
 
