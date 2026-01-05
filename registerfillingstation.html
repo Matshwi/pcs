@@ -2311,6 +2311,15 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 var regfs = document.getElementById("regfs");
 
   regfs.addEventListener("click", async function(event) {
+const {
+  data: { user }
+} = await supabase.auth.getUser()
+
+if (!user) {
+  alert('Please log in first')
+  window.location.href = '/login.html'
+  return
+}else{
     var company_name = document.getElementById("company_name").value;
 var trade_name = document.getElementById("trade_name").value;
 var salute = document.getElementById("salute").value;
@@ -2329,8 +2338,13 @@ var retail_licence_number = document.getElementById("retail_licence_number").val
 var site_licence_number = document.getElementById("site_licence_number").value;
 var email_address = document.getElementById("email_address").value;
 var registration_number = document.getElementById("registration_number").value;
-  const { data, error } = await supabase.from("fillingstations").insert([
-      {
+
+
+// 3️⃣ Insert filling station
+const { error } = await supabase
+  .from('filling_stations')
+  .insert({
+    owner_id: user.id,
     company_name: company_name,
     trade_name: trade_name,
     salute: salute,
@@ -2349,15 +2363,27 @@ var registration_number = document.getElementById("registration_number").value;
     email_address: email_address,
     retail_licence_number: retail_licence_number,
     registration_number: registration_number
-      }
-    ]);
+  })
 
-  if (error) {
-    console.error("Insert error:", error);
-  } else {
-    console.log("Data saved successfully!");
+if (error) {
+  alert(error.message)
+  return
+}else {
+    alert('Filling station registered successfully ✅')
     window.location.href = `./myfillingstations.html`;
   }
+}
+
+
+
+
+
+
+
+
+
+
+
 })
 
 
