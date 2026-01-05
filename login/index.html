@@ -147,22 +147,19 @@ var email = document.getElementById("email").value;
 
 if (paramValue) {
 
-	console.log(full_name + " after name is " + password + " after password is " + email);
-const { data, error } = await supabase.auth.signUp({
+
+const { error } = await supabase.auth.signUp({
   email,
-  password
+  password,
+  options: {
+    data: {
+      full_name: full_name
+    }
+  }
 })
 
-if (error) throw error
 
-const userId = data.user.id
-
-// Insert profile
-await supabase.from('profiles').insert({
-  id: userId,
-  full_name
-})
-        window.location.href = `../index.html?uid=${userId}`;
+        window.location.href = `../index.html`;
      
 
 
