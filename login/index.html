@@ -189,12 +189,6 @@ console.log('Password updated successfully');
   email,
   password
 })
-       
-
-        const { data, error } = await supabase.auth.signInWithPassword({
-  email,
-  password
-});
 
 if (error) {
   alert(error.message); // Display a more specific error message from Supabase
