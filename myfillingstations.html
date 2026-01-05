@@ -1997,9 +1997,10 @@ const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 
-  const { data, error } = await supabase
-    .from("fillingstations")
-    .select("*") // filter
+
+const { data, error } = await supabase
+  .from('filling_stations')
+  .select('*')
 
 
 
