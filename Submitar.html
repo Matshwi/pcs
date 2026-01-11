@@ -2235,7 +2235,7 @@ var station_id = document.getElementById("station_id").value;
   const { error } = await supabase.from("annual_returns").insert(
       {
     stationtype: stationtype,
-    station_id: station_id
+    station_id: station_id,
     stationname: stationname,
     year: year,
     training: training,
