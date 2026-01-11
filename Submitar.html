@@ -2217,7 +2217,8 @@ var registration_number = document.getElementById("registration_number").value;
 var address = document.getElementById("address").value;
 var rln = document.getElementById("rln").value;
 
-  const { data, error } = await supabase.from("annual_returns").insert([
+
+  const { error } = await supabase.from("annual_returns").insert(
       {
     stationtype: stationtype,
     stationname: stationname,
@@ -2252,7 +2253,7 @@ var rln = document.getElementById("rln").value;
     address: address,
     retail_licence_number : rln
       }
-    ]);
+    );
 
   if (error) {
     console.error("Insert error:", error);
