@@ -2134,6 +2134,7 @@
 <input type="hidden" id="registration_number">
 <input type="hidden" id="address">
 <input type="hidden" id="rln">
+<input type="hidden" id="station_id">
 
 
 
@@ -2228,11 +2229,13 @@ var relationship = document.getElementById("relationship").value;
 var registration_number = document.getElementById("registration_number").value;
 var address = document.getElementById("address").value;
 var rln = document.getElementById("rln").value;
+var station_id = document.getElementById("station_id").value;
 
 
   const { error } = await supabase.from("annual_returns").insert(
       {
     stationtype: stationtype,
+    station_id: station_id
     stationname: stationname,
     year: year,
     training: training,
@@ -2307,6 +2310,30 @@ if (selectedValue === "Filling station") {
                 <option value="${snapdata.trade_name}" style="background-color: white;color: black;padding: 5px;">${snapdata.trade_name}</option>
         `;
 
+        const { data: { extrainfo }, error } = await supabase.from("filling_stations").select("*").eq('trade_name', snapdata.trade_name).single()
+
+
+
+        // Populate hidden fields
+document.getElementById("companyname").value = extrainfo.stationname;
+document.getElementById("title").value = extrainfo.title;
+document.getElementById("name").value = extrainfo.name;
+document.getElementById("surname").value = extrainfo.surname;
+document.getElementById("idnum").value = extrainfo.idnum;
+document.getElementById("fuelsupplier").value = extrainfo.fuelsupplier;
+document.getElementById("branded").value = extrainfo.branded;
+document.getElementById("hdsaownership").value = extrainfo.hdsaownership;
+document.getElementById("relationship").value = extrainfo.relationship;
+document.getElementById("registration_number").value = extrainfo.registration_number;
+document.getElementById("address").value = extrainfo.address;
+document.getElementById("rln").value = extrainfo.retail_licence_number;
+document.getElementById("station_id").value = extrainfo.station_id;
+
+
+
+
+
+
 } else if(selectedValue === "Wholsaler"){
      document.getElementById("stationname").innerHTML += `
                 <option value="${snapdata.trade_name}" style="background-color: white;color: black;padding: 5px;">${snapdata.trade_name}</option>
@@ -2314,10 +2341,11 @@ if (selectedValue === "Filling station") {
  
 }
 
+
+
 })
 
 });
-        
 
         </script>
 
@@ -2549,15 +2577,15 @@ snapshot.forEach((childSnapshot) => {
   console.log("hidden values are added");
 
         // Populate hidden fields
-        document.getElementById("companyname").value = childData.company_name;
-        document.getElementById("title").value = childData.salute;
-        document.getElementById("name").value = childData.signee_name;
-        document.getElementById("surname").value = childData.signee_family_name;
-        document.getElementById("idnum").value = childData.signee_id_number;
-        document.getElementById("fuelsupplier").value = childData.fuel_supplier;
-        document.getElementById("branded").value = childData.oil_company_brand;
-        document.getElementById("hdsaownership").value = childData.hdsa_ownership_percentage;
-        document.getElementById("relationship").value = childData.relationship;
+document.getElementById("companyname").value = childData.company_name;
+document.getElementById("title").value = childData.salute;
+document.getElementById("name").value = childData.signee_name;
+document.getElementById("surname").value = childData.signee_family_name;
+document.getElementById("idnum").value = childData.signee_id_number;
+document.getElementById("fuelsupplier").value = childData.fuel_supplier;
+document.getElementById("branded").value = childData.oil_company_brand;
+document.getElementById("hdsaownership").value = childData.hdsa_ownership_percentage;
+document.getElementById("relationship").value = childData.relationship;
 document.getElementById("registration_number").value = childData.registration_number;
 document.getElementById("address").value = childData.postal_address;
 document.getElementById("rln").value = childData.retail_licence_number;
