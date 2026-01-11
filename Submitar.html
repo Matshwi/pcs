@@ -2181,6 +2181,8 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 var regfs = document.getElementById("sarbtn");
 
   regfs.addEventListener("click", async function(event) {
+    event.preventDefault();
+
 
 var stationtype = document.getElementById("stationtype").value;
 var stationname = document.getElementById("stationname").value;
@@ -2215,7 +2217,7 @@ var registration_number = document.getElementById("registration_number").value;
 var address = document.getElementById("address").value;
 var rln = document.getElementById("rln").value;
 
-  const { data, error } = await supabase.from("AnnualReturns").insert([
+  const { data, error } = await supabase.from("annual_returns").insert([
       {
     stationtype: stationtype,
     stationname: stationname,
