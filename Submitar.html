@@ -2310,10 +2310,14 @@ if (selectedValue === "Filling station") {
                 <option value="${snapdata.trade_name}" style="background-color: white;color: black;padding: 5px;">${snapdata.trade_name}</option>
         `;
 
-        const { data: { extrainfo }, error } = await supabase.from("filling_stations").select("*").eq('trade_name', snapdata.trade_name).single()
+      const chosenstation = document.getElementById("stationname");
 
+        
+chosenstation.addEventListener('change', async function() {
+        // Code to execute when the value changes
+        const selectedstationname = this.value; // 'this' refers to the select element
 
-
+if (snapdata.trade_name === selectedstationname) {
         // Populate hidden fields
 document.getElementById("companyname").value = extrainfo.company_name;
 document.getElementById("title").value = extrainfo.salute;
@@ -2329,8 +2333,11 @@ document.getElementById("address").value = extrainfo.postal_address;
 document.getElementById("rln").value = extrainfo.retail_licence_number;
 document.getElementById("station_id").value = extrainfo.id;
 
+} else {
+    consol.log("something went wrong");
+}
 
-
+})
 
 
 
