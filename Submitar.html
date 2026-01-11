@@ -2178,10 +2178,22 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 
 
+
+
 var regfs = document.getElementById("sarbtn");
 
   regfs.addEventListener("click", async function(event) {
     event.preventDefault();
+
+    const {
+  data: { user }
+} = await supabase.auth.getUser()
+
+if (!user) {
+  alert('Please log in first')
+  window.location.href = '/login.html'
+  return
+}else{
 
 
 var stationtype = document.getElementById("stationtype").value;
@@ -2263,9 +2275,15 @@ var rln = document.getElementById("rln").value;
   }
 
 
-  })
-
+  }
+})
     
+
+
+
+
+
+
  var stationchosen = document.getElementById("stationtype");
 
 stationchosen.addEventListener('change', async function() {
@@ -2299,7 +2317,7 @@ if (selectedValue === "Filling station") {
 })
 
 });
-            
+        
 
         </script>
 
