@@ -2319,19 +2319,19 @@ chosenstation.addEventListener('change', async function() {
 
 if (snapdata.trade_name === selectedstationname) {
         // Populate hidden fields
-document.getElementById("companyname").value = extrainfo.company_name;
-document.getElementById("title").value = extrainfo.salute;
-document.getElementById("name").value = extrainfo.signee_name;
-document.getElementById("surname").value = extrainfo.signee_family_name;
-document.getElementById("idnum").value = extrainfo.signee_id_number;
-document.getElementById("fuelsupplier").value = extrainfo.fuel_supplier;
-document.getElementById("branded").value = extrainfo.oil_company_brand;
-document.getElementById("hdsaownership").value = extrainfo.hdsa_ownership_percentage;
-document.getElementById("relationship").value = extrainfo.relationship;
-document.getElementById("registration_number").value = extrainfo.registration_number;
-document.getElementById("address").value = extrainfo.postal_address;
-document.getElementById("rln").value = extrainfo.retail_licence_number;
-document.getElementById("station_id").value = extrainfo.id;
+document.getElementById("companyname").value = snapdata.company_name;
+document.getElementById("title").value = snapdata.salute;
+document.getElementById("name").value = snapdata.signee_name;
+document.getElementById("surname").value = snapdata.signee_family_name;
+document.getElementById("idnum").value = snapdata.signee_id_number;
+document.getElementById("fuelsupplier").value = snapdata.fuel_supplier;
+document.getElementById("branded").value = snapdata.oil_company_brand;
+document.getElementById("hdsaownership").value = snapdata.hdsa_ownership_percentage;
+document.getElementById("relationship").value = snapdata.relationship;
+document.getElementById("registration_number").value = snapdata.registration_number;
+document.getElementById("address").value = snapdata.postal_address;
+document.getElementById("rln").value = snapdata.retail_licence_number;
+document.getElementById("station_id").value = snapdata.id;
 
 } else {
     consol.log("something went wrong");
