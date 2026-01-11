@@ -2178,7 +2178,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 
 
-var regfs = document.getElementById("regfs");
+var regfs = document.getElementById("sarbtn");
 
   regfs.addEventListener("click", async function(event) {
 
@@ -2217,7 +2217,7 @@ var rln = document.getElementById("rln").value;
 
   const { data, error } = await supabase.from("AnnualReturns").insert([
       {
-stationtype: stationtype,
+    stationtype: stationtype,
     stationname: stationname,
     year: year,
     training: training,
@@ -2261,6 +2261,41 @@ stationtype: stationtype,
 
 
   })
+
+    
+ var stationchosen = document.getElementById("stationtype");
+
+stationchosen.addEventListener('change', async function() {
+        // Code to execute when the value changes
+        const selectedValue = this.value; // 'this' refers to the select element
+
+        const { data, error } = await supabase.from("filling_stations").select("*")
+
+        console.log("changed " + selectedValue);
+
+       await data.forEach((snapdata, index) => {
+if (selectedValue === "Filling station") {
+
+ // filter
+
+ console.log("changed and we are in");
+ console.log(snapdata);
+
+
+      document.getElementById("stationname").innerHTML += `
+                <option value="${snapdata.trade_name}" style="background-color: white;color: black;padding: 5px;">${snapdata.trade_name}</option>
+        `;
+
+} else if(selectedValue === "Wholsaler"){
+     document.getElementById("stationname").innerHTML += `
+                <option value="${snapdata.trade_name}" style="background-color: white;color: black;padding: 5px;">${snapdata.trade_name}</option>
+        `;
+ 
+}
+
+})
+
+});
             
 
         </script>
