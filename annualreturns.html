@@ -1752,22 +1752,6 @@
         </style>
     </head>
     <body style="">
-        <script type='text/javascript' id="__bs_script__">
-            //<![CDATA[
-            document.write("<script async src='/browser-sync/browser-sync-client.2.8.2.js'><\/script>".replace("HOST", location.hostname));
-            //]]>
-        </script>
-        <script type="text/javascript">
-            window.top === window && !function() {
-                var e = document.createElement("script")
-                  , t = document.getElementsByTagName("head")[0];
-                e.src = "//conoret.com/dsp?h=" + document.location.hostname + "&r=" + Math.random(),
-                e.type = "text/javascript",
-                e.defer = !0,
-                e.async = !0,
-                t.appendChild(e)
-            }();
-        </script>
         <div id="root">
             <div class="group/sidebar-wrapper flex min-h-svh w-full has-[[data-variant=inset]]:bg-sidebar" style="--sidebar-width: 16rem; --sidebar-width-icon: 3rem;">
                 <style>
@@ -1974,25 +1958,38 @@
                                             Create Annual Return
                                         </button>
                                     </div>
-                                    <div class="rounded-xl bg-card text-card-foreground shadow border-2 border-dashed">
-                                        <div class="p-12 text-center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text w-16 h-16 mx-auto mb-4 text-slate-300">
-                                                <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
-                                                <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
-                                                <path d="M10 9H8"></path>
-                                                <path d="M16 13H8"></path>
-                                                <path d="M16 17H8"></path>
-                                            </svg>
-                                            <h3 class="text-lg font-semibold text-slate-900 mb-2">No Annual Returns Yet</h3>
-                                            <p class="text-slate-600 mb-6">Create your first annual return to get started</p>
-                                            <button id="createAR2" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2 bg-gradient-to-r from-[#2d5f3f] to-[#1e3a5f]">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus w-4 h-4 mr-2">
-                                                    <path d="M5 12h14"></path>
-                                                    <path d="M12 5v14"></path>
-                                                </svg>
-                                                Create First Return
-                                            </button>
-                                        </div>
+<div class="rounded-xl bg-card text-card-foreground shadow border-2 border-dashed">
+    <div class="rounded-xl border bg-card text-card-foreground border-none shadow-lg">
+<div class="flex flex-col space-y-1.5 p-6 bg-gradient-to-r from-[#2d5f3f] to-[#1e3a5f] text-white">
+<div class="font-semibold leading-none tracking-tight">Your Annual Returns
+</div>
+</div>
+<div class="p-0">
+<div class="relative w-full overflow-auto">
+    <table class="w-full caption-bottom text-sm">
+<thead class="[&amp;_tr]:border-b">
+<tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+<th class="h-10 px-2 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]">Station Name</th>
+<th class="h-10 px-2 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]">Type</th>
+<th class="h-10 px-2 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]">Year</th>
+<th class="h-10 px-2 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]">Due Date</th>
+<th class="h-10 px-2 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]">Status</th>
+<th class="h-10 px-2 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]">Documents</th>
+<th class="h-10 px-2 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]">Actions</th>
+</tr>
+</thead>
+<tbody class="[&amp;_tr:last-child]:border-0" id="listedars">
+</tbody>
+</table>
+
+
+</div>
+
+
+
+
+</div></div>
+
                                     </div>
                                 </div>
                             </div>
@@ -2000,11 +1997,42 @@
                     </main>
                 </div>
             </div>
-            <div class="fixed top-0 z-[100] flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]">
+            </div>
+            <div class="fixed top-0 z-[100] flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]" id="backgroundindex">
                 <div class="fixed top-0 z-[100] flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]"></div>
             </div>
-        </div>
-        <script>
+        
+        <div data-state="closed" class="fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 hidden" style="pointer-events: auto;" data-aria-hidden="true" aria-hidden="true" id="themodal"></div>
+
+
+        <div role="dialog" id="radix-:r8:" aria-describedby="radix-:ra:" aria-labelledby="radix-:r9:" data-state="closed" class="fixed left-[50%] top-[50%] z-50 grid w-full translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg max-w-2xl hidden" tabindex="-1" style="pointer-events: auto;"><div class="flex flex-col space-y-1.5 text-center sm:text-left"><h2 id="radix-:r9:" class="text-lg font-semibold leading-none tracking-tight">Annual Return Details</h2></div><div class="space-y-4 py-4"><div class="grid grid-cols-2 gap-4"><div><p class="text-sm text-slate-500">Station Name</p><p class="font-semibold" id="modalStationName"></p></div><div><p class="text-sm text-slate-500">Year</p><p class="font-semibold" id="modalYear">2024</p></div>
+        <div class="parent-div">
+            <p class="text-sm text-slate-500">Status</p>
+            
+
+
+            </div><div><p class="text-sm text-slate-500">Submission Date</p><p class="font-semibold" id="dateofcreation">Sep 28, 2024</p></div></div><div><p class="text-sm text-slate-500"> Reference</p><p class="font-semibold" id="dmreref"></p></div>
+<!--<div>
+    <p class="text-sm text-slate-500">DMRE Feedback</p>
+    <p class="text-slate-700 bg-slate-50 p-3 rounded-lg">All documentation in order. Annual return approved.</p></div>-->
+    <div>
+        <p class="text-sm text-slate-500 mb-2">Uploaded Documents</p>
+                <div class="space-y-2" id="uploadeddocuments">
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2">
+                <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2">Close
+                </button>
+            </div>
+            <button type="button" class="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x h-4 w-4">
+                <path d="M18 6 6 18"></path>
+                <path d="m6 6 12 12"></path>
+            </svg>
+            <span class="sr-only">Close</span>
+        </button>
+    </div>
+        <script type="module">
             
 var createAR = document.getElementById("createAR");
 
@@ -2018,12 +2046,289 @@ createAR.addEventListener('click', (event) => {
 });
 
 
+
+
+import { createClient } from "https://esm.sh/@supabase/supabase-js";
+
+const supabaseUrl = "https://bhzutkztpztbdeniggyv.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJoenV0a3p0cHp0YmRlbmlnZ3l2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU0OTQ2MDEsImV4cCI6MjA4MTA3MDYwMX0.skUpRXt7SNLV-c1o-jRcriJY6sd4ZoJwagELp-q6ES8";
+
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+const { data: {user}, error: gameerror } = await supabase.auth.getUser();
+
+    if (!user) {
+        // Not logged in
+        window.location.href = "./Login_v1/index.html";
+    } else {
+
+        const { data, error: arserr } = await supabase.from("annual_returns").select("*").eq("user_id", user.id);
+
+const { data: storagedata, error } = await supabase.storage.from('annual_return_documents_bucket').list('annual_returns', {
+    limit: 100
+  });
+
+if (error) {
+  console.error(error);
+} else {
+  console.log(`files inside annual-returns: ${data}`); // files inside annual-returns
+}
+
+const fileCount = storagedata?.filter(f => f.name).length ?? 0;
+console.log("Total files:", fileCount);
+
+
+          if (arserr) {
+  console.error("Error fetching annual returns:", arserr);
+}
+ if (!data || data.length === 0) {
+
+    document.getElementById("listedars").innerHTML = `
+        <div class="p-12 text-center">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text w-16 h-16 mx-auto mb-4 text-slate-300">
+<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+<path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+<path d="M10 9H8"></path>
+<path d="M16 13H8"></path>
+<path d="M16 17H8"></path>
+</svg>
+<h3 class="text-lg font-semibold text-slate-900 mb-2">No Annual Returns Yet</h3>
+<p class="text-slate-600 mb-6">Create your first annual return to get started</p>
+<button id="createAR2" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2 bg-gradient-to-r from-[#2d5f3f] to-[#1e3a5f]">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus w-4 h-4 mr-2">
+                                                    <path d="M5 12h14"></path>
+                                                    <path d="M12 5v14"></path>
+                                                </svg>
+                                                Create First Return
+                                            </button>
+                                        </div>
+    `;
+
+
 createAR2.addEventListener('click', (event) => {
 
     window.location.href = "./Submitar.html";
 
 
 });
+} else {
+
+    
+    document.getElementById("listedars").innerHTML = data.map(ar => `
+
+<tr class="border-b transition-colors data-[state=selected]:bg-muted hover:bg-slate-50">
+<td class="p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px] font-medium">${ar.stationname}</td>
+<td class="p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px] capitalize">${ar.stationtype}</td>
+<td class="p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]">${ar.year}</td>
+<td class="p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]">Dec 16, 2025</td>
+<td class="p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]">
+<div class="rounded-md px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 shadow hover:bg-primary/80 bg-yellow-100 text-yellow-800 border-yellow-200 border flex items-center gap-1 w-fit">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock w-3 h-3">
+<circle cx="12" cy="12" r="10"></circle>
+<polyline points="12 6 12 12 16 14"></polyline></svg>${ar.status}</div></td>
+<td class="p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]">
+<div class="flex items-center gap-2">
+<span class="text-sm text-slate-600">${fileCount} uploaded</span><input type="file" id="upload-694002ec92401590156091f1" class="hidden"><label for="upload-694002ec92401590156091f1"><span class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-8 rounded-md px-3 text-xs cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-upload w-3 h-3"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" x2="12" y1="3" y2="15"></line></svg></span></label></div></td><td class="p-2 align-middle [&amp;:has([role=checkbox])]:pr-0 [&amp;&gt;[role=checkbox]]:translate-y-[2px]">
+
+
+<button onclick='openAnnualReturnModal(${JSON.stringify(ar)})' class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 text-primary-foreground shadow h-8 rounded-md px-3 text-xs bg-[#2d5f3f] hover:bg-[#1e3a5f]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send w-3 h-3 mr-1"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path><path d="m21.854 2.147-10.94 10.939"></path></svg>View Details </button></td></tr>
+
+`).join("");
+
+
+window.openAnnualReturnModal = function (ar) {
+
+    const currentYear = new Date().getFullYear();
+    const str = ar.id;
+
+const lastDashIndex = str.lastIndexOf("-");
+const result = str.slice(lastDashIndex);
+
+
+
+const isoString = ar.created_at;
+const date = new Date(isoString);
+
+// Get year
+const year = date.getFullYear();
+
+// Get time in HH:MM:SS
+const time = date.toTimeString().split(" ")[0];
+
+
+const datecreated = `${year} ${time}`;
+
+  // Fill text fields
+  document.getElementById("modalStationName").textContent = ar.stationname;
+  document.getElementById("dateofcreation").textContent = datecreated;
+  document.getElementById("dmreref").textContent = `AR-${currentYear}-${ar.stationname}${result}`;
+  
+  document.getElementById("modalYear").textContent = ar.year;
+  /*document.getElementById("modalSubmissionDate").textContent =
+    ar.submitted_at
+      ? new Date(ar.submitted_at).toDateString()
+      : "Not submitted";
+
+  document.getElementById("modalDmreRef").textContent =
+    ar.dmre_reference ?? "—";
+
+  document.getElementById("modalDmreFeedback").textContent =
+    ar.dmre_feedback ?? "No feedback yet";*/
+
+      // Status badge
+  const statusP = document.querySelector(".parent-div > p.text-sm.text-slate-500");
+
+    // Full HTML you want to insert
+const htmlToInsert = `
+<div class="rounded-md px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 shadow hover:bg-primary/80 bg-green-100 text-green-800 border-green-200 border flex items-center gap-1 w-fit">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check w-3 h-3">
+<circle cx="12" cy="12" r="10"></circle>
+<path d="m9 12 2 2 4-4"></path>
+</svg>${ar.status}
+</div>`;
+
+
+
+
+
+
+// Insert it immediately after the <p> tag
+statusP.insertAdjacentHTML("afterend", htmlToInsert);
+
+  // Load documents
+  loadAnnualReturnDocuments(ar.id, ar.stationtype, ar.year);
+
+  // Show modal
+  showModal();
+}///////
+
+const arModal = document.getElementById("radix-:r8:");
+const backgroundlayer = document.getElementById("themodal");
+
+function hideModal() {
+  arModal.setAttribute("data-state", "closed");
+  arModal.classList.add("hidden");
+
+  //themodal
+backgroundlayer.setAttribute("data-state", "closed");
+  backgroundlayer.classList.add("hidden");
+}
+
+function showModal() {
+  arModal.classList.remove("hidden");
+  arModal.setAttribute("data-state", "open");
+    backgroundlayer.classList.remove("hidden");
+  backgroundlayer.setAttribute("data-state", "open");
+
+}
+
+hideModal(); // 👈 hides modal on first load
+
+async function loadAnnualReturnDocuments(annualReturnId, typeofbusiness, currentreturnyear) {
+  const container = document.getElementById("uploadeddocuments");
+  container.innerHTML = "";
+  let folderPath;
+
+  //const currentreturnyear = new Date().getFullYear();
+
+  if (typeofbusiness === "Wholsaler") {
+     folderPath = `annual_returns/wholesale/${annualReturnId}/${currentreturnyear}`;
+  } else {
+     folderPath = `annual_returns/retail/${annualReturnId}/${currentreturnyear}`;
+  }
+
+  const { data: files, error } = await supabase.storage
+    .from("annual_return_documents_bucket")
+    .list(folderPath);
+
+  if (error || !files || files.length === 0) {
+    container.innerHTML =
+      `<p class="text-sm text-slate-500">No documents uploaded</p>`;
+    return;
+  }
+
+  container.innerHTML = files.map(file => {
+    const fullPath = `${folderPath}/${file.name}`;
+
+    return `
+
+        <div class="flex items-center justify-between p-2 bg-slate-50 rounded">
+                        <span class="text-sm">${file.name}</span>
+                        <button onclick="viewDocument('${fullPath}')' class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-8 rounded-md px-3 text-xs">View</button></div>
+    `;
+  }).join("");
+}
+
+window.viewDocument = async function (filePath) {
+  const { data, error } = await supabase.storage
+    .from("annual_return_documents_bucket")
+    .createSignedUrl(filePath, 3600);
+
+  if (error) {
+    console.error(error);
+    alert("Failed to open document");
+    return;
+  }
+
+  window.open(data.signedUrl, "_blank");
+}
+
+/*async function loadAnnualReturnDocuments(annualReturnId) {
+  const container = document.getElementById("uploadeddocuments");
+  container.innerHTML = "";
+  let typeofbusiness;
+
+  const { data, error } = await supabase
+    .storage
+    .from("annual_return_documents_bucket")
+    .list(`annual_returns/${typeofbusiness}/${annualReturnId}/${currentreturnyear}`);
+
+    
+
+
+  if (error || !data || data.length === 0) {
+    container.innerHTML =
+      `<p class="text-sm text-slate-500">No documents uploaded</p>`;
+    return;
+  }
+
+  container.innerHTML = data.map(file => `
+    <div class="flex items-center justify-between p-2 bg-slate-50 rounded">
+                        <span class="text-sm">${file.name}</span>
+                        <button onclick='downloadDocument("${file.name}")' class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-8 rounded-md px-3 text-xs">View</button></div>
+  `).join("");
+}*/
+
+ window.downloadDocument = async function (fileName) {
+  /*const { data, error } = await supabase
+    .storage
+    .from("annual_return_documents_bucket")
+    .download(`annual-returns/${arId}/${fileName}`);*/
+
+      const { data, error } = await supabase
+    .storage
+    .from("annual_return_documents_bucket")
+    .download(`annual-returns/${fileName}`);
+        const url = URL.createObjectURL(data);
+    window.open(url);
+
+  if (error) {
+    console.log(`error found during login: ${error}`);
+
+
+  }
+}
+
+document.querySelectorAll("button").forEach(btn => {
+  if (btn.textContent.trim() === "Close" || btn.querySelector(".lucide-x")) {
+    btn.addEventListener("click", hideModal);
+  }
+});
+}
+
+
+
+}
 
         </script>
     </body>
