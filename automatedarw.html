@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+
+<script src="https://unpkg.com/pizzip@3.1.5/dist/pizzip.js"></script>
+<script src="https://unpkg.com/docxtemplater@3.39.0/build/docxtemplater.js"></script>
+<script src="https://unpkg.com/file-saver@2.0.5/dist/FileSaver.min.js"></script>
+
+<script type="module">
+import { createClient } from "https://esm.sh/@supabase/supabase-js";
+
+const supabaseUrl = "https://bhzutkztpztbdeniggyv.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJoenV0a3p0cHp0YmRlbmlnZ3l2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU0OTQ2MDEsImV4cCI6MjA4MTA3MDYwMX0.skUpRXt7SNLV-c1o-jRcriJY6sd4ZoJwagELp-q6ES8";
+
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+const {
+  data: { user }
+} = await supabase.auth.getUser()
+
+if (!user) {
+  alert('Please log in first')
+  window.location.href = '/login.html'
+  
+}else{
+
+  // ===== UPLOAD DOCX TO SUPABASE =====
+async function uploadDocxToSupabase(docxBlob, annualReturnId, templateName) {
+  const currentreturnyear = new Date().getFullYear();
+  const cleanName = templateName.replace(".docx", "");
+
+  const filePath = `annual_returns/wholesale/${annualReturnId}/${currentreturnyear}/${cleanName}.docx`;
+
+  const { error } = await supabase.storage
+    .from('annual_return_documents_bucket')
+    .upload(filePath, docxBlob, {
+      contentType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+      upsert: true
+    });
+
+  if (error) throw error;
+
+  return filePath;
+}
+
+// ===== SAVE RECORD =====
+async function saveDocumentRecord(annualReturnId, filePath, templateName) {
+  const { error } = await supabase
+    .from('annual_return_documents')
+    .insert({
+      annual_return_id: annualReturnId,
+      document_type: templateName,
+      file_path: filePath,
+      version: 1
+    });
+
+  if (error) throw error;
+}
+
+
+
+	async function generateDoc(templateFile) {
+
+		    const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const paramValue = urlParams.get('fsid');
+
+
+// FETCH DATA FROM SUPABASE
+const { data, error } = await supabase.from("annual_returns").select("*").eq('station_id', paramValue).single();
+
+if(error){
+console.log(error);
+alert("Error fetching annual return");
+return;
+}
+
+if (!data) {
+ alert("No data found");
+ return;
+}
+
+const annualReturnId = data.id;
+
+const licenceD = (data.retail_licence_number || "");
+const companyD = (data.companyname || "").toUpperCase();
+const stationnameD = (data.stationname || "").toUpperCase();
+const nameD = (data.name || "").toUpperCase();
+const surnameD = (data.surname || "").toUpperCase();
+const idnumD = (data.idnum || "").toUpperCase();
+const regnum = (data.registration_number || "");
+const hdsao = (data.hdsaownership || "");
+
+
+// SPLIT VALUES THAT REQUIRE ONE CHARACTER PER CELL
+const licence = (data.retail_licence_number || "").split("");
+const company = (data.companyname || "").toUpperCase().split("");
+const stationname = (data.stationname || "").toUpperCase().split("");
+const title = (data.title || "").toUpperCase().split("");
+const name = (data.name || "").toUpperCase().split("");
+const surname = (data.surname || "").toUpperCase().split("");
+const idnum = (data.idnum || "").toUpperCase().split("");
+const fuelsupplier = (data.fuelsupplier || "").toUpperCase().split("");
+const branded = (data.branded || "").toUpperCase().split("");
+const hdsaownership = (data.hdsaownership || "").toUpperCase().split("");
+const relationship = (data.relationship || "").toUpperCase().split("");
+const petrol_volume_bought = String(data.petrol_volume_bought || "").split("");
+const diesel_volume_bought = String(data.diesel_volume_bought || "").split("");
+const paraffin_volume_bought = String(data.paraffin_volume_bought || "").split("");
+const ag_volume_bought = String(data.ag_volume_bought || "").split("");
+const lpg_volume_bought = String(data.lpg_volume_bought || "").split("");
+const jf_volume_bought = String(data.jf_volume_bought || "").split("");
+const bf_volume_bought = String(data.bf_volume_bought || "").split("");
+const petrol_volume_sold = String(data.petrol_volume_sold || "").split("");
+const diesel_volume_sold = String(data.diesel_volume_sold || "").split("");
+const paraffin_volume_sold = String(data.paraffin_volume_sold || "").split("");
+
+const bf_volume_sold = String(data.bf_volume_sold || "").split("");
+
+const jf_volume_sold = String(data.jf_volume_sold || "").split("");
+
+const ag_volume_sold = String(data.ag_volume_sold || "").split("");
+const lpg_volume_sold = String(data.lpg_volume_sold || "").split("");
+
+const blackmale = String(data.blackmale || "").split("");
+const blackfemale = String(data.blackfemale || "").split("");
+const blackdis = String(data.blackdis || "").split("");
+const colouredmale = String(data.colouredmale || "").split("");
+const colouredfemale = String(data.colouredfemale || "").split("");
+const coloureddis = String(data.coloureddis || "").split("");
+const indianmale = String(data.indianmale || "").split("");
+const indianfemale = String(data.indianfemale || "").split("");
+const indiandis = String(data.indiandis || "").split("");
+const whitemale = String(data.whitemale || "").split("");
+const whitefemale = String(data.whitefemale || "").split("");
+const whitedis = String(data.whitedis || "").split("");
+const training = (data.training || "").toUpperCase().split("");
+const totalBlack    = Number(data.blackmale) + Number(data.blackfemale);
+const totalWhite    = Number(data.whitemale) + Number(data.whitefemale);
+const totalColoured = Number(data.colouredmale) + Number(data.colouredfemale);
+const totalIndian   = Number(data.indianmale) + Number(data.indianfemale);
+
+    // Add everything together
+const totalEmployees = 
+        totalBlack + totalWhite + totalColoured + totalIndian;
+
+
+const tenum = String(totalEmployees).split("");
+
+
+
+
+  const response = await fetch(templateFile);
+  const content = await response.arrayBuffer();
+
+  const zip = new PizZip(content);
+  const doc = new window.docxtemplater(zip);
+
+  //const doc = new window.docxtemplater(zip);
+
+
+
+
+
+let templateD = {};
+let tradename = {};
+
+//const trainingsite = (data.retail_licence_number || "").trim();
+
+if (data.ownership === "no change in ownership") {
+
+templateD.conditional = "has not changed";
+
+}
+else if (data.ownership === "change in ownership") {
+  
+  templateD.conditional = "has changed";
+
+}
+
+
+
+if (!stationnameD) {
+
+tradename.company_name = companyD;
+
+}
+else if (stationnameD) {
+  
+  tradename.company_name = `${companyD} t/a  ${stationnameD}`;
+
+}
+
+
+  doc.setData({
+
+/*...petrol,
+...diesel,*/
+
+...templateD,
+...tradename,
+
+
+name: `${nameD} ${surnameD}`,
+identity: `(ID. NR. ${idnumD})`,
+
+regnum: regnum,
+licence: licenceD,
+
+
+hdsa: `${hdsao}%`,
+
+// LICENCE NUMBER CELLS
+
+w1: licence[0] || "",
+w2: licence[1] || "",
+w3: licence[2] || "",
+w4: licence[3] || "",
+w5: licence[4] || "",
+w6: licence[5] || "",
+w7: licence[6] || "",
+w8: licence[7] || "",
+w9: licence[8] || "",
+w10: licence[9] || "",
+w11: licence[10] || "",
+
+
+// COMPANY NAME CELLS
+
+    r1: company[0] || "",
+    r2: company[1] || "", // || ""
+    r3: company[2] || "",
+    r4: company[3] || "",
+    r5: company[4] || "",
+    r6: company[5] || "",
+    r7: company[6] || "",
+    r8: company[7] || "",
+    r9: company[8] || "",
+    r10: company[9] || "",
+    r11: company[10] || "",
+    r12: company[11] || "",
+    r13: company[12] || "",
+    r14: company[13] || "",
+    r15: company[14] || "",
+    r16: company[15] || "",
+    r17: company[16] || "",
+    r18: company[17] || "",
+    r19: company[18] || "",
+    r20: company[19] || "",
+    r21: company[20] || "",
+    r22: company[21] || "",
+    r23: company[22] || "",
+    r24: company[23] || "",
+    r25: company[24] || "",
+    r26: company[25] || "",
+    r27: company[26] || "",
+    r28: company[27] || "",
+    r29: company[28] || "",
+    r30: company[29] || "",
+    r31: company[30] || "",
+    r32: company[31] || "",
+    r33: company[32] || "",
+    r34: company[33] || "",
+    r35: company[34] || "",
+    r36: company[35] || "",
+    r37: company[36] || "",
+    r38: company[37] || "",
+    r39: company[38] || "",
+    r40: company[39] || "",
+    r41: company[40] || "",
+    r42: company[41] || "",
+    r43: company[42] || "",
+    r44: company[43] || "",
+
+
+
+
+    t1: stationname[0] || "",
+    t2: stationname[1] || "",
+    t3: stationname[2] || "",
+    t4: stationname[3] || "",
+    t5: stationname[4] || "",
+    t6: stationname[5] || "",
+    t7: stationname[6] || "",
+    t8: stationname[7] || "",
+    t9: stationname[8] || "",
+    t10: stationname[9] || "",
+    t11: stationname[10] || "",
+    t12: stationname[11] || "",
+    t13: stationname[12] || "",
+    t14: stationname[13] || "",
+    t15: stationname[14] || "",
+    t16: stationname[15] || "",
+    t17: stationname[16] || "",
+    t18: stationname[17] || "",
+    t19: stationname[18] || "",
+    t20: stationname[19] || "",
+    t21: stationname[20] || "",
+    t22: stationname[21] || "",
+    t23: stationname[22] || "",
+    t24: stationname[23] || "",
+    t25: stationname[24] || "",
+    t26: stationname[25] || "",
+    t27: stationname[26] || "",
+    t28: stationname[27] || "",
+    t29: stationname[28] || "",
+    t30: stationname[29] || "",
+    t31: stationname[30] || "",
+    t32: stationname[31] || "",
+    t33: stationname[32] || "",
+    t34: stationname[33] || "",
+    t35: stationname[34] || "",
+    t36: stationname[35] || "",
+    t37: stationname[36] || "",
+    t38: stationname[37] || "",
+    t39: stationname[38] || "",
+    t40: stationname[39] || "",
+    t41: stationname[40] || "",
+    t42: stationname[41] || "",
+    t43: stationname[42] || "",
+    t44: stationname[43] || "",
+
+
+    s1: title[0] || "",
+    s2: title[1] || "",
+    s3: title[2] || "",
+    s4: title[4] || "",
+
+
+
+    f1: surname[0] || "",
+    f2: surname[1] || "",
+    f3: surname[2] || "",
+    f4: surname[3] || "",
+    f5: surname[4] || "",
+    f6: surname[5] || "",
+    f7: surname[6] || "",
+    f8: surname[7] || "",
+    f9: surname[8] || "",
+    f10: surname[9] || "",
+    f11: surname[10] || "",
+    f12: surname[11] || "",
+    f13: surname[12] || "",
+    f14: surname[13] || "",
+    f15: surname[14] || "",
+    f16: surname[15] || "",
+    f17: surname[16] || "",
+    f18: surname[17] || "",
+    f19: surname[18] || "",
+    f20: surname[19] || "",
+    f21: surname[20] || "",
+    f22: surname[21] || "",
+
+    f23: name[0] || "",
+    f24: name[1] || "",
+    f25: name[2] || "",
+    f26: name[3] || "",
+    f27: name[4] || "",
+    f28: name[5] || "",
+    f29: name[6] || "",
+    f30: name[7] || "",
+    f31: name[8] || "",
+    f32: name[9] || "",
+    f33: name[10] || "",
+    f34: name[11] || "",
+    f35: name[12] || "",
+    f36: name[13] || "",
+    f37: name[14] || "",
+    f38: name[15] || "",
+    f39: name[16] || "",
+    f40: name[17] || "",
+    f41: name[18] || "",
+    f42: name[19] || "",
+    f43: name[20] || "",
+    f44: name[21] || "",
+
+
+    i1: idnum[0] || "",
+    i2: idnum[1] || "",
+    i3: idnum[2] || "",
+    i4: idnum[3] || "",
+    i5: idnum[4] || "",
+    i6: idnum[5] || "",
+    i7: idnum[6] || "",
+    i8: idnum[7] || "",
+    i9: idnum[8] || "",
+    i10: idnum[9] || "",
+    i11: idnum[10] || "",
+    i12: idnum[11] || "",
+    i13: idnum[12] || "",
+
+
+
+    h1: bf_volume_sold[0] || "",
+    h2: bf_volume_sold[1] || "",
+    h3: bf_volume_sold[2] || "",
+    h4: bf_volume_sold[3] || "",
+    h5: bf_volume_sold[4] || "",
+    h6: bf_volume_sold[5] || "",
+    h7: bf_volume_sold[6] || "",
+    h8: bf_volume_sold[7] || "",
+    h9: bf_volume_sold[8] || "",
+    h10: bf_volume_sold[9] || "",
+    h11: bf_volume_sold[10] || "",
+
+
+
+    p1: petrol_volume_bought[0] || "",
+    p2: petrol_volume_bought[1] || "",
+    p3: petrol_volume_bought[2] || "",
+    p4: petrol_volume_bought[3] || "",
+    p5: petrol_volume_bought[4] || "",
+    p6: petrol_volume_bought[5] || "",
+    p7: petrol_volume_bought[6] || "",
+    p8: petrol_volume_bought[7] || "",
+    p9: petrol_volume_bought[8] || "",
+    p10: petrol_volume_bought[9] || "",
+    p11: petrol_volume_bought[10] || "",
+
+
+    d1: diesel_volume_bought[0] || "",
+    d2: diesel_volume_bought[1] || "",
+    d3: diesel_volume_bought[2] || "",
+    d4: diesel_volume_bought[3] || "",
+    d5: diesel_volume_bought[4] || "",
+    d6: diesel_volume_bought[5] || "",
+    d7: diesel_volume_bought[6] || "",
+    d8: diesel_volume_bought[7] || "",
+    d9: diesel_volume_bought[8] || "",
+    d10: diesel_volume_bought[9] || "",
+    d11: diesel_volume_bought[10] || "",
+
+
+
+a1: ag_volume_bought[0] || "",
+a2: ag_volume_bought[1] || "",
+a3: ag_volume_bought[2] || "",
+a4: ag_volume_bought[3] || "",
+a5: ag_volume_bought[4] || "",
+a6: ag_volume_bought[5] || "",
+a7: ag_volume_bought[6] || "",
+a8: ag_volume_bought[7] || "",
+a9: ag_volume_bought[8] || "",
+a10: ag_volume_bought[9] || "",
+a11: ag_volume_bought[10] || "",
+
+
+
+q1: lpg_volume_bought[0] || "",
+q2: lpg_volume_bought[1] || "",
+q3: lpg_volume_bought[2] || "",
+q4: lpg_volume_bought[3] || "",
+q5: lpg_volume_bought[4] || "",
+q6: lpg_volume_bought[5] || "",
+q7: lpg_volume_bought[6] || "",
+q8: lpg_volume_bought[7] || "",
+q9: lpg_volume_bought[8] || "",
+q10: lpg_volume_bought[9] || "",
+q11: lpg_volume_bought[10] || "",
+
+j1: jf_volume_bought[0] || "",
+j2: jf_volume_bought[1] || "",
+j3: jf_volume_bought[2] || "",
+j4: jf_volume_bought[3] || "",
+j5: jf_volume_bought[4] || "",
+j6: jf_volume_bought[5] || "",
+j7: jf_volume_bought[6] || "",
+j8: jf_volume_bought[7] || "",
+j9: jf_volume_bought[8] || "",
+j10: jf_volume_bought[9] || "",
+j11: jf_volume_bought[10] || "",
+
+
+
+    b1: bf_volume_bought[0] || "",
+    b2: bf_volume_bought[1] || "",
+    b3: bf_volume_bought[2] || "",
+    b4: bf_volume_bought[3] || "",
+    b5: bf_volume_bought[4] || "",
+    b6: bf_volume_bought[5] || "",
+    b7: bf_volume_bought[6] || "",
+    b8: bf_volume_bought[7] || "",
+    b9: bf_volume_bought[8] || "",
+    b10: bf_volume_bought[9] || "",
+    b11: bf_volume_bought[10] || "",
+
+
+
+
+    l1: paraffin_volume_bought[0] || "",
+    l2: paraffin_volume_bought[1] || "",
+    l3: paraffin_volume_bought[2] || "",
+    l4: paraffin_volume_bought[3] || "",
+    l5: paraffin_volume_bought[4] || "",
+    l6: paraffin_volume_bought[5] || "",
+    l7: paraffin_volume_bought[6] || "",
+    l8: paraffin_volume_bought[7] || "",
+    l9: paraffin_volume_bought[8] || "",
+    l10: paraffin_volume_bought[9] || "",
+    l11: paraffin_volume_bought[10] || "",
+
+
+e1: petrol_volume_sold[0] || "",
+e2: petrol_volume_sold[1] || "",
+e3: petrol_volume_sold[2] || "",
+e4: petrol_volume_sold[3] || "",
+e5: petrol_volume_sold[4] || "",
+e6: petrol_volume_sold[5] || "",
+e7: petrol_volume_sold[6] || "",
+e8: petrol_volume_sold[7] || "",
+e9: petrol_volume_sold[8] || "",
+e10: petrol_volume_sold[9] || "",
+e11: petrol_volume_sold[10] || "",
+
+y1: diesel_volume_sold[0] || "",
+y2: diesel_volume_sold[1] || "",
+y3: diesel_volume_sold[2] || "",
+y4: diesel_volume_sold[3] || "",
+y5: diesel_volume_sold[4] || "",
+y6: diesel_volume_sold[5] || "",
+y7: diesel_volume_sold[6] || "",
+y8: diesel_volume_sold[7] || "",
+y9: diesel_volume_sold[8] || "",
+y10: diesel_volume_sold[9] || "",
+y11: diesel_volume_sold[10] || "",
+
+u1: paraffin_volume_sold[0] || "",
+u2: paraffin_volume_sold[1] || "",
+u3: paraffin_volume_sold[2] || "",
+u4: paraffin_volume_sold[3] || "",
+u5: paraffin_volume_sold[4] || "",
+u6: paraffin_volume_sold[5] || "",
+u7: paraffin_volume_sold[6] || "",
+u8: paraffin_volume_sold[7] || "",
+u9: paraffin_volume_sold[8] || "",
+u10: paraffin_volume_sold[9] || "",
+u11: paraffin_volume_sold[10] || "",
+
+v1: ag_volume_sold[0] || "",
+v2: ag_volume_sold[1] || "",
+v3: ag_volume_sold[2] || "",
+v4: ag_volume_sold[3] || "",
+v5: ag_volume_sold[4] || "",
+v6: ag_volume_sold[5] || "",
+v7: ag_volume_sold[6] || "",
+v8: ag_volume_sold[7] || "",
+v9: ag_volume_sold[8] || "",
+v10: ag_volume_sold[9] || "",
+v11: ag_volume_sold[10] || "",
+
+    o1: lpg_volume_sold[0] || "",
+    o2: lpg_volume_sold[1] || "",
+    o3: lpg_volume_sold[2] || "",
+    o4: lpg_volume_sold[3] || "",
+    o5: lpg_volume_sold[4] || "",
+    o6: lpg_volume_sold[5] || "",
+    o7: lpg_volume_sold[6] || "",
+    o8: lpg_volume_sold[7] || "",
+    o9: lpg_volume_sold[8] || "",
+    o10: lpg_volume_sold[9] || "",
+    o11: lpg_volume_sold[10] || "",
+
+
+
+
+g1: jf_volume_sold[0] || "",
+g2: jf_volume_sold[1] || "",
+g3: jf_volume_sold[2] || "",
+g4: jf_volume_sold[3] || "",
+g5: jf_volume_sold[4] || "",
+g6: jf_volume_sold[5] || "",
+g7: jf_volume_sold[6] || "",
+g8: jf_volume_sold[7] || "",
+g9: jf_volume_sold[8] || "",
+g10: jf_volume_sold[9] || "",
+g11: jf_volume_sold[10] || "",
+
+
+
+
+k1: blackmale[0] || "",
+k2: blackmale[1] || "",
+k3: blackmale[2] || "",
+k4: blackmale[3] || "",
+
+k5: blackfemale[0] || "",
+k6: blackfemale[1] || "",
+k7: blackfemale[2] || "",
+k8: blackfemale[3] || "",
+
+k9: blackdis[0] || "",
+k10: blackdis[1] || "",
+k11: blackdis[2] || "",
+k12: blackdis[3] || "",
+
+k13: colouredmale[0] || "",
+k14: colouredmale[1] || "",
+k15: colouredmale[2] || "",
+k16: colouredmale[3] || "",
+
+k17: colouredfemale[0] || "",
+k18: colouredfemale[1] || "",
+k19: colouredfemale[2] || "",
+k20: colouredfemale[3] || "",
+
+k21: coloureddis[0] || "",
+k22: coloureddis[1] || "",
+k23: coloureddis[2] || "",
+k24: coloureddis[3] || "",
+
+k25: indianmale[0] || "",
+k26: indianmale[1] || "",
+k27: indianmale[2] || "",
+k28: indianmale[3] || "",
+
+k29: indianfemale[0] || "",
+k30: indianfemale[1] || "",
+k31: indianfemale[2] || "",
+k32: indianfemale[3] || "",
+
+  k33: indiandis[0] || "",
+  k34: indiandis[1] || "",
+  k35: indiandis[2] || "",
+  k36: indiandis[3] || "",
+
+  k37: whitemale[0] || "",
+  k38: whitemale[1] || "",
+  k39: whitemale[2] || "",
+  k40: whitemale[3] || "",
+
+  k41: whitefemale[0] || "",
+  k42: whitefemale[1] || "",
+  k43: whitefemale[2] || "",
+  k44: whitefemale[3] || "",
+
+  k45: whitedis[0] || "",
+  k46: whitedis[1] || "",
+  k47: whitedis[2] || "",
+  k48: whitedis[3] || "",
+
+z1: tenum[0] || "",
+z2: tenum[1] || "",
+z3: tenum[2] || "",
+z4: tenum[3] || "",
+z5: tenum[4] || "",
+z6: tenum[5] || "",
+
+
+x1: hdsaownership[0] || "",
+x2: hdsaownership[1] || "",
+x3: hdsaownership[2] || "",
+
+
+year: data.year || "",
+
+
+});
+  doc.render();
+
+  const blob = doc.getZip().generate({ type: "blob" });
+/*  const blob = doc.getZip().generate({
+type:"blob",
+mimeType:"application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+});*/
+  saveAs(blob, templateFile);
+  try {
+  const filePath = await uploadDocxToSupabase(
+    blob,
+    annualReturnId,
+    templateFile
+  );
+
+  await saveDocumentRecord(
+    annualReturnId,
+    filePath,
+    templateFile
+  );
+
+  console.log("Uploaded:", filePath);
+
+} catch (err) {
+  console.error(err);
+  alert("Failed to upload document");
+}
+}
+
+await generateDoc("DMRE30.docx");
+await generateDoc("wholesale_declaration.docx");
+
+
+
+
+
+
+}
+
+</script>
+
+</body>
+</html>
