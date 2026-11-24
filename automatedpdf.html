@@ -70,8 +70,8 @@ async function saveDocumentRecord(annualReturnId, filePath, templateName) {
 
 
 // FETCH DATA FROM SUPABASE
-const { data, error } = await supabase.from("annual_returns").select("*").eq('station_id', paramValue).single();
-
+const { data, error } = await supabase.from("annual_returns").select("*").eq('id', annualReturnId).single();
+console.log(data);
 if(error){
 console.log(error);
 alert("Error fetching annual return");
