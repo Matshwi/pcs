@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- saved from url=(0067)https://petro-compliance-2d5fb3e1.base44.app/registerfillingstation -->
 <html lang="en" data-qb-installed="true">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -8,7 +7,7 @@
         <link href="https://petro-compliance-2d5fb3e1.base44.app/manifest.json" rel="manifest">
         <title>PetroCompliance
   </title>
-        <script crossorigin="" src="./PetroCompliance - regfs_files/index-DfhR_v4x.js" type="module"></script>
+        <!--<script crossorigin="" src="./PetroCompliance - regfs_files/index-DfhR_v4x.js" type="module"></script>-->
         <link crossorigin="" href="./PetroCompliance - regfs_files/index-Bwue-oE7.css" rel="stylesheet">
         <!--<script async="true" data-app-id="691276f1b49376b22d5fb3e1" data-platform-url="https://app.base44.com" src="./PetroCompliance - regfs_files/badge.js"></script>-->
         <style>
@@ -2094,7 +2093,7 @@
   </button>
 
   <!-- This is the actual select element, kept hidden but updated by the custom select -->
-  <select id="salute" class="sr-only" aria-hidden="true" tabindex="-1" style="position: absolute; border: 0px; width: 1px; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); white-space: nowrap; overflow-wrap: normal;">
+  <select id="salute" class="sr-only" aria-hidden="true" tabindex="-1" style="position: absolute; border: 0px; width: 1px; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); white-space: nowrap; overflow-wrap: normal; cursor: pointer;">
     <option value="Mr" selected>Mr</option>
     <option value="Mrs">Mrs</option>
     <option value="Ms">Ms</option>
@@ -2220,7 +2219,7 @@
 <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="hdsa_ownership_percentage">HDSA Ownership (%)</label>
 <input type="number" class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm" id="hdsa_ownership_percentage" min="0" max="100" value="0">
                                                 </div>
-<div class="custom-select-wrapper custom-select-wrapper1">
+<div class="custom-select-wrapper1">
   <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="relationship-custom-button">Type of Relationship *</label>
 
   <!-- This is the visual button that acts as the custom select trigger -->
@@ -2241,7 +2240,7 @@
   </button>
 
   <!-- This is the actual select element, kept hidden but updated by the custom select -->
-  <select id="relationship" class="sr-only" aria-hidden="true" tabindex="-1" style="position: absolute; border: 0px; width: 1px; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); white-space: nowrap; overflow-wrap: normal;">
+  <select id="relationship" class="sr-only" aria-hidden="true" tabindex="-1" style="position: absolute; border: 0px; width: 1px; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); white-space: nowrap; overflow-wrap: normal; cursor: pointer;">
     <option value="Retailer Owned, Retailer Operated" selected>Retailer Owned, Retailer Operated</option>
     <option value="3rd Party Owned, Oil Company Leased">3rd Party Owned, Oil Company Leased</option>
     <option value="Oil Company Owned, Retailer Operated">Oil Company Owned, Retailer Operated</option>
@@ -2385,6 +2384,233 @@ if (error) {
 
 
 })
+
+
+
+  document.addEventListener('DOMContentLoaded', () => {
+  const customButton = document.getElementById('salute-custom-button');
+  const selectElement = document.getElementById('salute');
+  const customOptionsList = document.getElementById('salute-options-list');
+  const customButtonLabel = document.getElementById('salute-custom-button-label');
+
+  if (!customButton || !selectElement || !customOptionsList || !customButtonLabel) {
+    console.error('Custom select elements not found.');
+    return;
+  }
+
+  // --- Initialize state based on the hidden select ---
+  function initializeCustomSelect() {
+    customButtonLabel.textContent = selectElement.options[selectElement.selectedIndex].textContent;
+    const currentSelectedValue = selectElement.value;
+    Array.from(customOptionsList.children).forEach(option => {
+      if (option.dataset.value === currentSelectedValue) {
+        option.classList.add('selected');
+        customButton.setAttribute('aria-activedescendant', option.id); // Set initial active descendant
+      } else {
+        option.classList.remove('selected');
+      }
+    });
+  }
+  initializeCustomSelect();
+
+  // --- Toggle dropdown visibility ---
+  function toggleDropdown() {
+    const isExpanded = customButton.getAttribute('aria-expanded') === 'true';
+    customButton.setAttribute('aria-expanded', !isExpanded);
+    customOptionsList.classList.toggle('hidden');
+    if (!isExpanded) {
+      // Focus on the currently selected option when opening
+      const selectedOption = customOptionsList.querySelector('.selected');
+      if (selectedOption) {
+        selectedOption.focus();
+        customButton.setAttribute('aria-activedescendant', selectedOption.id);
+      }
+    } else {
+      customButton.focus(); // Return focus to button when closing
+    }
+  }
+
+  customButton.addEventListener('click', toggleDropdown);
+
+  // --- Handle option selection ---
+  customOptionsList.addEventListener('click', (event) => {
+    const target = event.target;
+    if (target.classList.contains('custom-select-option')) {
+      const value = target.dataset.value;
+
+      // Update the hidden native select
+      selectElement.value = value;
+
+      // Update the custom button's label
+      customButtonLabel.textContent = target.textContent;
+
+      // Update active/selected styles in the custom list
+      Array.from(customOptionsList.children).forEach(option => {
+        option.classList.remove('selected');
+      });
+      target.classList.add('selected');
+      customButton.setAttribute('aria-activedescendant', target.id); // Update active descendant
+
+      // Close the dropdown
+      toggleDropdown();
+
+      // Trigger a change event on the native select for other listeners
+      selectElement.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+  });
+
+  // --- Close dropdown when clicking outside ---
+  document.addEventListener('click', (event) => {
+    const customSelectWrapper = document.querySelector('.custom-select-wrapper');
+    if (!customSelectWrapper.contains(event.target)) {
+      if (customButton.getAttribute('aria-expanded') === 'true') {
+        customButton.setAttribute('aria-expanded', 'false');
+        customOptionsList.classList.add('hidden');
+      }
+    }
+  });
+
+  // --- Keyboard Navigation (Basic) ---
+  customOptionsList.addEventListener('keydown', (event) => {
+    const activeOption = document.activeElement;
+    let nextOption = null;
+
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault(); // Prevent page scroll
+      if (activeOption && activeOption.classList.contains('custom-select-option')) {
+        nextOption = (event.key === 'ArrowDown') ? activeOption.nextElementSibling : activeOption.previousElementSibling;
+      } else {
+        // If nothing is focused in the list, focus the first or last
+        nextOption = (event.key === 'ArrowDown') ? customOptionsList.firstElementChild : customOptionsList.lastElementChild;
+      }
+
+      if (nextOption && nextOption.classList.contains('custom-select-option')) {
+        nextOption.focus();
+        customButton.setAttribute('aria-activedescendant', nextOption.id);
+      }
+    } else if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      if (activeOption && activeOption.classList.contains('custom-select-option')) {
+        activeOption.click(); // Simulate click on the option
+      }
+    } else if (event.key === 'Escape') {
+      toggleDropdown();
+    }
+  });
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const customButton = document.getElementById('relationship-custom-button');
+  const selectElement = document.getElementById('relationship');
+  const customOptionsList = document.getElementById('relationship-options-list');
+  const customButtonLabel = document.getElementById('relationship-custom-button-label');
+
+  if (!customButton || !selectElement || !customOptionsList || !customButtonLabel) {
+    console.error('Custom select elements not found.');
+    return;
+  }
+
+  // --- Initialize state based on the hidden select ---
+  function initializeCustomSelect() {
+    customButtonLabel.textContent = selectElement.options[selectElement.selectedIndex].textContent;
+    const currentSelectedValue = selectElement.value;
+    Array.from(customOptionsList.children).forEach(option => {
+      if (option.dataset.value === currentSelectedValue) {
+        option.classList.add('selected');
+        customButton.setAttribute('aria-activedescendant', option.id); // Set initial active descendant
+      } else {
+        option.classList.remove('selected');
+      }
+    });
+  }
+  initializeCustomSelect();
+
+  // --- Toggle dropdown visibility ---
+  function toggleDropdown() {
+    const isExpanded = customButton.getAttribute('aria-expanded') === 'true';
+    customButton.setAttribute('aria-expanded', !isExpanded);
+    customOptionsList.classList.toggle('hidden');
+    if (!isExpanded) {
+      // Focus on the currently selected option when opening
+      const selectedOption = customOptionsList.querySelector('.selected');
+      if (selectedOption) {
+        selectedOption.focus();
+        customButton.setAttribute('aria-activedescendant', selectedOption.id);
+      }
+    } else {
+      customButton.focus(); // Return focus to button when closing
+    }
+  }
+
+  customButton.addEventListener('click', toggleDropdown);
+
+  // --- Handle option selection ---
+  customOptionsList.addEventListener('click', (event) => {
+    const target = event.target;
+    if (target.classList.contains('custom-select-option')) {
+      const value = target.dataset.value;
+
+      // Update the hidden native select
+      selectElement.value = value;
+
+      // Update the custom button's label
+      customButtonLabel.textContent = target.textContent;
+
+      // Update active/selected styles in the custom list
+      Array.from(customOptionsList.children).forEach(option => {
+        option.classList.remove('selected');
+      });
+      target.classList.add('selected');
+      customButton.setAttribute('aria-activedescendant', target.id); // Update active descendant
+
+      // Close the dropdown
+      toggleDropdown();
+
+      // Trigger a change event on the native select for other listeners
+      selectElement.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+  });
+
+  // --- Close dropdown when clicking outside ---
+  document.addEventListener('click', (event) => {
+    const customSelectWrapper = document.querySelector('.custom-select-wrapper1');
+    if (!customSelectWrapper.contains(event.target)) {
+      if (customButton.getAttribute('aria-expanded') === 'true') {
+        customButton.setAttribute('aria-expanded', 'false');
+        customOptionsList.classList.add('hidden');
+      }
+    }
+  });
+
+  // --- Keyboard Navigation (Basic) ---
+  customOptionsList.addEventListener('keydown', (event) => {
+    const activeOption = document.activeElement;
+    let nextOption = null;
+
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault(); // Prevent page scroll
+      if (activeOption && activeOption.classList.contains('custom-select-option')) {
+        nextOption = (event.key === 'ArrowDown') ? activeOption.nextElementSibling : activeOption.previousElementSibling;
+      } else {
+        // If nothing is focused in the list, focus the first or last
+        nextOption = (event.key === 'ArrowDown') ? customOptionsList.firstElementChild : customOptionsList.lastElementChild;
+      }
+
+      if (nextOption && nextOption.classList.contains('custom-select-option')) {
+        nextOption.focus();
+        customButton.setAttribute('aria-activedescendant', nextOption.id);
+      }
+    } else if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      if (activeOption && activeOption.classList.contains('custom-select-option')) {
+        activeOption.click(); // Simulate click on the option
+      }
+    } else if (event.key === 'Escape') {
+      toggleDropdown();
+    }
+  });
+});
 
 
         </script>
