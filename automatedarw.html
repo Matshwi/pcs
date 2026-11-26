@@ -68,11 +68,11 @@ async function saveDocumentRecord(annualReturnId, filePath, templateName) {
 
 		    const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  const paramValue = urlParams.get('fsid');
+  const paramValue = urlParams.get('annualReturnId');
 
 
 // FETCH DATA FROM SUPABASE
-const { data, error } = await supabase.from("annual_returns").select("*").eq('station_id', paramValue).single();
+const { data, error } = await supabase.from("annual_returns").select("*").eq('id', paramValue).single();
 
 if(error){
 console.log(error);
