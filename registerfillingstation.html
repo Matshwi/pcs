@@ -2611,6 +2611,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+var dahsboardlink = document.getElementById("dashboard");
+
+dahsboardlink.addEventListener("click", function() {
+    window.location.href = "./index.html";
+  });
 
 
         </script>
@@ -2642,7 +2647,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const db = getDatabase(app);
   const refdb = ref(db, 'fillinfstations/');
 
-var dahsboardlink = document.getElementById("dashboard");
+
 
 var regfs = document.getElementById("regfs");
 
@@ -2709,9 +2714,7 @@ push(refdb, fsData)
 
             
 
-dahsboardlink.addEventListener("click", function() {
-    window.location.href = "./index.html";
-  });
+
 
 
 document.addEventListener('DOMContentLoaded', () => {
