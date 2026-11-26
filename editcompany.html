@@ -2297,7 +2297,373 @@
             </div>
         </div>
 
+
         <script type="module">
+import { createClient } from "https://esm.sh/@supabase/supabase-js";
+
+const supabaseUrl = "https://bhzutkztpztbdeniggyv.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJoenV0a3p0cHp0YmRlbmlnZ3l2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU0OTQ2MDEsImV4cCI6MjA4MTA3MDYwMX0.skUpRXt7SNLV-c1o-jRcriJY6sd4ZoJwagELp-q6ES8";
+
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+// -------------------------------------------------
+// 1. Auth check + load existing data
+// -------------------------------------------------
+const { data: { user } } = await supabase.auth.getUser();
+
+if (!user) {
+  alert('Please log in first');
+  window.location.href = '/login.html';
+} else {
+
+  const queryParams = new URLSearchParams(window.location.search);
+  const comid = queryParams.get('comid');
+
+  let data = null; // keep this in scope for the update button
+
+  try {
+    const { data: fetched, error } = await supabase
+      .from('filling_stations')
+      .select('*')
+      .eq("id", comid)
+      .single();
+
+    if (error || !fetched) {
+      console.error(error || 'No data found');
+      alert('Could not load company data');
+    } else {
+      data = fetched;
+
+      // ----- Normal text / number inputs -----
+      document.getElementById("company_name").value          = data.company_name || '';
+      document.getElementById("trade_name").value            = data.trade_name || '';
+      document.getElementById("signee_family_name").value    = data.signee_family_name || '';
+      document.getElementById("signee_name").value           = data.signee_name || '';
+      document.getElementById("signee_id_number").value      = data.signee_id_number || '';
+      document.getElementById("fuel_supplier").value         = data.fuel_supplier || '';
+      document.getElementById("oil_company_brand").value     = data.oil_company_brand || '';
+      document.getElementById("hdsa_ownership_percentage").value = data.hdsa_ownership_percentage || '';
+      document.getElementById("postal_address").value       = data.postal_address || '';
+      document.getElementById("postal_code").value          = data.postal_code || '';
+      document.getElementById("business_tel").value          = data.business_tel || '';
+      document.getElementById("mobile_phone").value          = data.mobile_phone || '';
+      document.getElementById("retail_licence_number").value = data.retail_licence_number || '';
+      document.getElementById("site_licence_number").value   = data.site_licence_number || '';
+      document.getElementById("email_address").value         = data.email_address || '';
+      document.getElementById("registration_number").value  = data.registration_number || '';
+
+      // ----- Custom dropdown: Title of Signee (salute) -----
+      if (data.salute) {
+        const sel = document.getElementById('salute');
+        sel.value = data.salute;
+        document.getElementById('salute-custom-button-label').textContent = data.salute;
+        document.querySelectorAll('#salute-options-list .custom-select-option').forEach(li => {
+          li.classList.toggle('selected', li.dataset.value === data.salute);
+        });
+      }
+
+      // ----- Custom dropdown: Type of Relationship -----
+      if (data.relationship) {
+        const sel = document.getElementById('relationship');
+        sel.value = data.relationship;
+        document.getElementById('relationship-custom-button-label').textContent = data.relationship;
+        document.querySelectorAll('#relationship-options-list .custom-select-option').forEach(li => {
+          li.classList.toggle('selected', li.dataset.value === data.relationship);
+        });
+      }
+    }
+  } catch (err) {
+    console.error(err);
+    alert('Error loading company data');
+  }
+
+  // -------------------------------------------------
+  // 2. Update button click handler
+  // -------------------------------------------------
+  const regfs = document.getElementById("regfs");
+
+  regfs.addEventListener("click", async function (event) {
+    event.preventDefault();
+
+    if (!data) {
+      alert('No original data loaded – cannot update');
+      return;
+    }
+
+    const company_name            = document.getElementById("company_name").value;
+    const trade_name              = document.getElementById("trade_name").value;
+    const salute                  = document.getElementById("salute").value;
+    const signee_family_name      = document.getElementById("signee_family_name").value;
+    const signee_name             = document.getElementById("signee_name").value;
+    const signee_id_number        = document.getElementById("signee_id_number").value;
+    const fuel_supplier           = document.getElementById("fuel_supplier").value;
+    const oil_company_brand       = document.getElementById("oil_company_brand").value;
+    const hdsa_ownership_percentage = document.getElementById("hdsa_ownership_percentage").value;
+    const relationship            = document.getElementById("relationship").value;
+    const postal_address          = document.getElementById("postal_address").value;
+    const postal_code             = document.getElementById("postal_code").value;
+    const business_tel            = document.getElementById("business_tel").value;
+    const mobile_phone            = document.getElementById("mobile_phone").value;
+    const retail_licence_number   = document.getElementById("retail_licence_number").value;
+    const site_licence_number     = document.getElementById("site_licence_number").value;
+    const email_address           = document.getElementById("email_address").value;
+    const registration_number     = document.getElementById("registration_number").value;
+
+    const updates = {};
+
+    if (salute !== data.salute) updates.salute = salute;
+    if (company_name !== data.company_name) updates.company_name = company_name;
+    if (trade_name !== data.trade_name) updates.trade_name = trade_name;
+    if (signee_family_name !== data.signee_family_name) updates.signee_family_name = signee_family_name;
+    if (signee_name !== data.signee_name) updates.signee_name = signee_name;
+    if (signee_id_number !== data.signee_id_number) updates.signee_id_number = signee_id_number;
+    if (fuel_supplier !== data.fuel_supplier) updates.fuel_supplier = fuel_supplier;
+    if (oil_company_brand !== data.oil_company_brand) updates.oil_company_brand = oil_company_brand;
+    if (hdsa_ownership_percentage !== data.hdsa_ownership_percentage) updates.hdsa_ownership_percentage = hdsa_ownership_percentage;
+    if (relationship !== data.relationship) updates.relationship = relationship;
+    if (postal_address !== data.postal_address) updates.postal_address = postal_address;
+    if (postal_code !== data.postal_code) updates.postal_code = postal_code;
+    if (business_tel !== data.business_tel) updates.business_tel = business_tel;
+    if (mobile_phone !== data.mobile_phone) updates.mobile_phone = mobile_phone;
+    if (site_licence_number !== data.site_licence_number) updates.site_licence_number = site_licence_number;
+    if (email_address !== data.email_address) updates.email_address = email_address;
+    if (retail_licence_number !== data.retail_licence_number) updates.retail_licence_number = retail_licence_number;
+    if (registration_number !== data.registration_number) updates.registration_number = registration_number;
+
+    const filteredUpdates = Object.fromEntries(
+      Object.entries(updates).filter(([key, value]) => value !== null && value !== "")
+    );
+
+    const { error: err } = await supabase
+      .from("filling_stations")
+      .update(filteredUpdates)
+      .eq("id", comid);
+
+    if (err) {
+      alert(err.message);
+      return;
+    } else {
+      console.log('Filling station updated successfully ✅');
+      window.location.href = `./myfillingstations.html`;
+    }
+  });
+} // end of else (user is logged in)
+
+
+// =================================================
+// 3. Custom Select – Title of Signee (salute)
+//    (placed OUTSIDE the if/else so it always runs)
+// =================================================
+function initSaluteSelect() {
+  const customButton      = document.getElementById('salute-custom-button');
+  const selectElement     = document.getElementById('salute');
+  const customOptionsList = document.getElementById('salute-options-list');
+  const customButtonLabel = document.getElementById('salute-custom-button-label');
+
+  if (!customButton || !selectElement || !customOptionsList || !customButtonLabel) {
+    console.error('Salute custom select elements not found.');
+    return;
+  }
+
+  function initializeCustomSelect() {
+    customButtonLabel.textContent = selectElement.options[selectElement.selectedIndex]?.textContent || 'Mr';
+    const currentSelectedValue = selectElement.value;
+    Array.from(customOptionsList.children).forEach(option => {
+      if (option.dataset.value === currentSelectedValue) {
+        option.classList.add('selected');
+      } else {
+        option.classList.remove('selected');
+      }
+    });
+  }
+  initializeCustomSelect();
+
+  function toggleDropdown() {
+    const isExpanded = customButton.getAttribute('aria-expanded') === 'true';
+    customButton.setAttribute('aria-expanded', !isExpanded);
+    customOptionsList.classList.toggle('hidden');
+    if (!isExpanded) {
+      const selectedOption = customOptionsList.querySelector('.selected');
+      if (selectedOption) selectedOption.focus();
+    } else {
+      customButton.focus();
+    }
+  }
+
+  customButton.addEventListener('click', toggleDropdown);
+
+  customOptionsList.addEventListener('click', (event) => {
+    const target = event.target;
+    if (target.classList.contains('custom-select-option')) {
+      const value = target.dataset.value;
+      selectElement.value = value;
+      customButtonLabel.textContent = target.textContent;
+
+      Array.from(customOptionsList.children).forEach(option => {
+        option.classList.remove('selected');
+      });
+      target.classList.add('selected');
+
+      toggleDropdown();
+      selectElement.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+  });
+
+  // Close when clicking outside
+  document.addEventListener('click', (event) => {
+    const wrapper = document.querySelector('.custom-select-wrapper');
+    if (wrapper && !wrapper.contains(event.target)) {
+      if (customButton.getAttribute('aria-expanded') === 'true') {
+        customButton.setAttribute('aria-expanded', 'false');
+        customOptionsList.classList.add('hidden');
+      }
+    }
+  });
+
+  // Basic keyboard support
+  customOptionsList.addEventListener('keydown', (event) => {
+    const activeOption = document.activeElement;
+    let nextOption = null;
+
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      if (activeOption && activeOption.classList.contains('custom-select-option')) {
+        nextOption = (event.key === 'ArrowDown')
+          ? activeOption.nextElementSibling
+          : activeOption.previousElementSibling;
+      } else {
+        nextOption = (event.key === 'ArrowDown')
+          ? customOptionsList.firstElementChild
+          : customOptionsList.lastElementChild;
+      }
+      if (nextOption && nextOption.classList.contains('custom-select-option')) {
+        nextOption.focus();
+      }
+    } else if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      if (activeOption && activeOption.classList.contains('custom-select-option')) {
+        activeOption.click();
+      }
+    } else if (event.key === 'Escape') {
+      toggleDropdown();
+    }
+  });
+}
+
+// =================================================
+// 4. Custom Select – Type of Relationship
+// =================================================
+function initRelationshipSelect() {
+  const customButton      = document.getElementById('relationship-custom-button');
+  const selectElement     = document.getElementById('relationship');
+  const customOptionsList = document.getElementById('relationship-options-list');
+  const customButtonLabel = document.getElementById('relationship-custom-button-label');
+
+  if (!customButton || !selectElement || !customOptionsList || !customButtonLabel) {
+    console.error('Relationship custom select elements not found.');
+    return;
+  }
+
+  function initializeCustomSelect() {
+    customButtonLabel.textContent = selectElement.options[selectElement.selectedIndex]?.textContent || '';
+    const currentSelectedValue = selectElement.value;
+    Array.from(customOptionsList.children).forEach(option => {
+      if (option.dataset.value === currentSelectedValue) {
+        option.classList.add('selected');
+      } else {
+        option.classList.remove('selected');
+      }
+    });
+  }
+  initializeCustomSelect();
+
+  function toggleDropdown() {
+    const isExpanded = customButton.getAttribute('aria-expanded') === 'true';
+    customButton.setAttribute('aria-expanded', !isExpanded);
+    customOptionsList.classList.toggle('hidden');
+    if (!isExpanded) {
+      const selectedOption = customOptionsList.querySelector('.selected');
+      if (selectedOption) selectedOption.focus();
+    } else {
+      customButton.focus();
+    }
+  }
+
+  customButton.addEventListener('click', toggleDropdown);
+
+  customOptionsList.addEventListener('click', (event) => {
+    const target = event.target;
+    if (target.classList.contains('custom-select-option')) {
+      const value = target.dataset.value;
+      selectElement.value = value;
+      customButtonLabel.textContent = target.textContent;
+
+      Array.from(customOptionsList.children).forEach(option => {
+        option.classList.remove('selected');
+      });
+      target.classList.add('selected');
+
+      toggleDropdown();
+      selectElement.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+  });
+
+  // Close when clicking outside
+  document.addEventListener('click', (event) => {
+    const wrapper = document.querySelector('.custom-select-wrapper1');
+    if (wrapper && !wrapper.contains(event.target)) {
+      if (customButton.getAttribute('aria-expanded') === 'true') {
+        customButton.setAttribute('aria-expanded', 'false');
+        customOptionsList.classList.add('hidden');
+      }
+    }
+  });
+
+  // Basic keyboard support
+  customOptionsList.addEventListener('keydown', (event) => {
+    const activeOption = document.activeElement;
+    let nextOption = null;
+
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      if (activeOption && activeOption.classList.contains('custom-select-option')) {
+        nextOption = (event.key === 'ArrowDown')
+          ? activeOption.nextElementSibling
+          : activeOption.previousElementSibling;
+      } else {
+        nextOption = (event.key === 'ArrowDown')
+          ? customOptionsList.firstElementChild
+          : customOptionsList.lastElementChild;
+      }
+      if (nextOption && nextOption.classList.contains('custom-select-option')) {
+        nextOption.focus();
+      }
+    } else if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      if (activeOption && activeOption.classList.contains('custom-select-option')) {
+        activeOption.click();
+      }
+    } else if (event.key === 'Escape') {
+      toggleDropdown();
+    }
+  });
+}
+
+// -------------------------------------------------
+// 5. Start the custom selects (safe for modules)
+// -------------------------------------------------
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    initSaluteSelect();
+    initRelationshipSelect();
+  });
+} else {
+  initSaluteSelect();
+  initRelationshipSelect();
+}
+</script>
+
+        <!--<script type="module">
 import { createClient } from "https://esm.sh/@supabase/supabase-js";
 
 const supabaseUrl = "https://bhzutkztpztbdeniggyv.supabase.co";
@@ -2666,7 +3032,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-        </script>
+        </script>-->
 <!--<script type="module">
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
