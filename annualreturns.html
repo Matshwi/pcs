@@ -2226,6 +2226,73 @@ hideModal(); // 👈 hides modal on first load
 
 async function loadAnnualReturnDocuments(annualReturnId, typeofbusiness, currentreturnyear) {
   const container = document.getElementById("uploadeddocuments");
+  container.innerHTML = `<p class="text-sm text-slate-500">Loading documents...</p>`;
+
+  // Force everything to string to avoid type issues
+  const id   = String(annualReturnId);
+  const year = String(currentreturnyear);
+  const type = String(typeofbusiness || "").trim();
+
+  let folderPath;
+  if (type === "Wholsaler") {
+    folderPath = `annual_returns/wholesale/${id}/${year}`;
+  } else {
+    folderPath = `annual_returns/retail/${id}/${year}`;
+  }
+
+  console.log("=== Document Loader Debug ===");
+  console.log("stationtype :", type);
+  console.log("annualReturnId:", id);
+  console.log("year        :", year);
+  console.log("Looking in  :", folderPath);
+
+  const { data: files, error } = await supabase.storage
+    .from("annual_return_documents_bucket")
+    .list(folderPath, {
+      limit: 100,
+      offset: 0,
+      sortBy: { column: "name", order: "asc" }
+    });
+
+  console.log("Raw response from storage.list():", { files, error });
+
+  if (error) {
+    console.error("Storage error:", error);
+    container.innerHTML = `<p class="text-sm text-red-500">Error loading documents: ${error.message}</p>`;
+    return;
+  }
+
+  // Filter out folder placeholders (items with no name or id === null)
+  const realFiles = (files || []).filter(f => f.name && f.id !== null);
+
+  console.log("Real files found:", realFiles);
+
+  if (realFiles.length === 0) {
+    container.innerHTML = `<p class="text-sm text-slate-500">No documents uploaded</p>`;
+    return;
+  }
+
+  container.innerHTML = realFiles.map(file => {
+    const fullPath = `${folderPath}/${file.name}`;
+
+    return `
+      <div class="flex items-center justify-between p-2 bg-slate-50 rounded mb-1">
+        <span class="text-sm truncate max-w-[70%]">${file.name}</span>
+        <button onclick="viewDocument('${fullPath}')"
+                class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium 
+                       transition-colors focus-visible:outline-none focus-visible:ring-1 
+                       focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 
+                       hover:bg-accent hover:text-accent-foreground h-8 rounded-md px-3 text-xs">
+          View
+        </button>
+      </div>
+    `;
+  }).join("");
+}
+
+/*
+async function loadAnnualReturnDocuments(annualReturnId, typeofbusiness, currentreturnyear) {
+  const container = document.getElementById("uploadeddocuments");
   container.innerHTML = "";
   let folderPath;
 
@@ -2257,7 +2324,7 @@ async function loadAnnualReturnDocuments(annualReturnId, typeofbusiness, current
                         <button onclick="viewDocument('${fullPath}')" class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-8 rounded-md px-3 text-xs">View</button></div>
     `;
   }).join("");
-}
+}*/
 
 window.viewDocument = async function (filePath) {
   const { data, error } = await supabase.storage
