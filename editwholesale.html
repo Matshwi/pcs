@@ -1902,8 +1902,8 @@
                                                         <span class="font-medium text-sm">My Wallet</span>
                                                     </a>
                                                 </li>
-                                                <li data-sidebar="menu-item" class="group/menu-item relative">
-                                                    <a class="peer/menu-button flex w-full items-center gap-2 overflow-hidden p-2 text-left outline-none ring-sidebar-ring focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-[[data-sidebar=menu-action]]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:!size-8 group-data-[collapsible=icon]:!p-2 [&amp;&gt;span:last-child]:truncate [&amp;&gt;svg]:size-4 [&amp;&gt;svg]:shrink-0 hover:text-sidebar-accent-foreground h-8 text-sm hover:bg-slate-100 transition-all duration-200 rounded-lg mb-1 text-slate-700 flex items-center gap-3 px-3 py-2.5" data-sidebar="menu-button" data-size="default" data-active="false" href="./chatassistant.html">
+                                                <li data-sidebar="menu-item" class="group/menu-item relative" onclick="logout()">
+                                                    <a class="peer/menu-button flex w-full items-center gap-2 overflow-hidden p-2 text-left outline-none ring-sidebar-ring focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-[[data-sidebar=menu-action]]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:!size-8 group-data-[collapsible=icon]:!p-2 [&amp;&gt;span:last-child]:truncate [&amp;&gt;svg]:size-4 [&amp;&gt;svg]:shrink-0 hover:text-sidebar-accent-foreground h-8 text-sm hover:bg-slate-100 transition-all duration-200 rounded-lg mb-1 text-slate-700 flex items-center gap-3 px-3 py-2.5" data-sidebar="menu-button" data-size="default" data-active="false">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-square w-5 h-5">
                                                             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                                                         </svg>
@@ -2440,6 +2440,34 @@ if (document.readyState === 'loading') {
 } else {
   initSaluteSelect();
 }
+
+async function logout() {
+  const { error } = await supabase.auth.signOut();
+
+  if (error) {
+    console.error("Logout error:", error.message);
+    alert("Failed to log out. Please try again.");
+    return;
+  }
+
+  // Redirect to login page after successful logout
+  window.location.href = "./Login_v1/index.html";
+  // or whatever your login page path is
+}
+
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+
+document.addEventListener('keydown', function(e) {
+    if (
+        e.key === 'F12' ||
+        (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key.toUpperCase())) ||
+        (e.ctrlKey && e.key.toUpperCase() === 'U')
+    ) {
+        e.preventDefault();
+    }
+});
 </script>
 
         <!--<script type="module">
